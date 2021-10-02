@@ -1,0 +1,24 @@
+{
+  "name": "praworzadzmy",
+  "version": "1.0.0",
+  "description": "PraworzadzMy Website",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wasniowski/praworzadzmy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wasniowski/praworzadzmy/issues"
+  },
+  "homepage": "https://github.com/wasniowski/praworzadzmy#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "./node_modules/.bin/sass --watch ./scss/style.scss ./css/style.css",
+    "serve": "./node_modules/.bin/browser-sync start --server --files 'index.php' 'css/*.css'"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.14",
+    "prettier": "2.2.1",
+    "sass": "^1.32.8"
+  }
+}

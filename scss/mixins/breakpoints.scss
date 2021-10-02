@@ -1,0 +1,61 @@
+$breakpoints: (
+        initial: 0,
+        xsmall: 576,
+        small: 768,
+        medium: 992,
+        large: 1260
+);
+
+@function map-next($map, $key) {
+  $values: map-values($map);
+  $result: null;
+
+  @for $i from 1 to (length($map) + 1) {
+    @if (nth($values, $i) == map-get($map, $key)) {
+      $result: if(($i + 1) > length($map), null, nth($values, $i + 1));
+    }
+  }
+
+  @return $result;
+}
+
+
+/// @param {val} $val - can include breakpoint key and direction (default is up if direction is not included).
+@mixin breakpoint($val: initial) {
+  $key: nth($val, 1);
+  $breakpoint: map-get($breakpoints, nth($val, 1));
+  $direction: if(length($val) > 1, nth($val, 2), up);
+  $query: 'only screen';
+
+  @if map-has-key($breakpoints, $key) {
+    @if $breakpoint > 0 or $direction == only {
+      @if $direction == only {
+        $query: $query + ' and (min-width: #{$breakpoint}px)';
+        $next-breakpoint: map-next($breakpoints, $key);
+        @if $next-breakpoint != null {
+          $query: $query + ' and (max-width: #{$next-breakpoint}px)';
+        }
+      } @else if $direction == down {
+        $query: $query + ' and (max-width: #{$breakpoint}px)';
+      } @else {
+        $query: $query + ' and (min-width: #{$breakpoint}px)';
+      }
+
+      @media #{$query} {
+        @content;
+      }
+    } @else {
+      @content;
+    }
+  } @else {
+    @warn 'Unfortunately, no value could be retrieved from `#{$key}`. '
+        + 'Available breakpoints are: #{map-keys($breakpoints)}.';
+  }
+}
+
+@mixin target-ie11() {
+  // sass-lint:disable no-vendor-prefixes
+  @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+    @content;
+  }
+}

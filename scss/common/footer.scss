@@ -1,0 +1,78 @@
+@import "../mixins/breakpoints";
+@import "../common/variables";
+
+#footer {
+  .container {
+    &:nth-child(1) {
+      border-bottom: 1px solid $color-blue-dark;
+    }
+
+    &:nth-child(2) {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-areas: "copy social links";
+      grid-column-gap: 40px;
+      min-height: 100px;
+    }
+
+    .logo {
+      grid-area: logo;
+      padding: 40px 0;
+      .svg-bg {
+        background: url("../images/logo-black.svg") center center no-repeat;
+        background-size: 76px 40px;
+        width: 76px;
+        height: 40px;
+      }
+    }
+
+    .social {
+      grid-area: social;
+      display: flex;
+      align-items: center;
+
+      a {
+        text-decoration: none;
+        border: 0;
+
+        @include breakpoint(medium) {
+          margin-right: 50px;
+        }
+      }
+    }
+
+    .links {
+      grid-area: links;
+      display: flex;
+
+      @include breakpoint(medium) {
+        align-items: center;
+        justify-content: flex-end;
+      }
+
+      a {
+        margin-left: 20px;
+        font-size: 16px;
+        line-height: 21px;
+        text-decoration: none;
+        border-color: $text-color-dark;
+        color: $text-color-dark;
+      }
+    }
+
+    .copy {
+      grid-area: copy;
+      display: flex;
+      align-items: center;
+
+      p {
+        font-size: 14px;
+        line-height: 21px;
+
+        span {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+}

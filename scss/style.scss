@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Krona+One&family=Manrope:wght@400;600;800&display=swap");
+
+@import "mixins/breakpoints";
+
+@import "common/normalize";
+@import "common/variables";
+@import "common/nav";
+@import "common/footer";
+@import "common/contact-form";
+
+@import "helpers/helpers";
+@import "helpers/page-helpers";
+
+
+html {
+  color: $text-color-dark;
+  font-size: 20px;
+  line-height: 32px;
+  font-family: "Manrope", sans-serif;
+  box-sizing: border-box;
+  -ms-overflow-style: scrollbar;
+}
+
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  //text-rendering: geometricPrecision;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+    padding: 0 0 0 20px;
+    font-size: 16px;
+    line-height: 26px;
+    position: relative;
+
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 13px;
+      left: 0;
+      width: 4px;
+      height: 4px;
+      border-radius: 4px;
+      background: $color-grey-dark;
+    }
+  }
+}
+
+body {}
+
+a {
+  color: $color-blue-dark;
+  text-decoration: none;
+  border-bottom: 2px dotted $color-blue-dark;
+  font-weight: 600;
+}
+
+p {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 32px;
+  margin: 0;
+  padding: 0;
+}
+
+.homepage {
+
+}
+
+
+
+

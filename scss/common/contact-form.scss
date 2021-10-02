@@ -1,0 +1,121 @@
+@import "../mixins/breakpoints";
+@import "../common/variables";
+
+.form {
+  form {
+    position: relative;
+    display: grid;
+    grid-template-areas: "name mail" "content content" "button .";
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+
+    .user_name {
+      grid-area: name;
+    }
+    .user_email {
+      grid-area: mail;
+    }
+    .user_message {
+      grid-area: content;
+    }
+
+    button {
+      grid-area: button;
+      background: $color-orange;
+      color: $color-white;
+      border: 0;
+      padding: 16px;
+      margin: 0;
+      width: 100%;
+      outline: none;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    input,
+    textarea {
+      border: 1px solid $color-grey-line;
+      background: $color-white;
+      padding: 16px 32px;
+      outline: none;
+      width: 100%;
+      color: $text-color-dark;
+      font-size: 18px;
+      line-height: 32px;
+      display: block;
+    }
+
+    textarea {
+      height: 160px;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 1px;
+      height: 1px;
+      background: url("images/ajax_loader.svg") center center no-repeat rgba(248, 245, 242, 0.8);
+      z-index: 10;
+    }
+
+    &.submitting {
+      &:before {
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: auto;
+        height: auto;
+      }
+    }
+  }
+
+  .text-with-separator {
+    margin-left: 0;
+    @include breakpoint(medium) {
+      margin-left: 60px;
+      margin-top: 120px;
+    }
+  }
+}
+
+.form-dynamic-labels {
+  .form-dynamic-label-item {
+    position: relative;
+    .fi-label {
+      transition: all 250ms ease 0ms;
+      position: absolute;
+      top: 16px;
+      left: 22px;
+      cursor: text;
+      padding: 0 10px;
+      color: $color-grey;
+      font-size: 14px;
+      line-height: 32px;
+    }
+    &.filled {
+      .fi-label {
+        top: -10px;
+        background: $color-white;
+        color: $color-blue-dark;
+        font-size: 14px;
+        line-height: 22px;
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+.wpcf7-not-valid-tip {
+  font-size: 12px;
+  line-height: 30px;
+}
+
+.wpcf7-response-output {
+  margin: 20px 0 !important;
+  border-color: #dc3232 !important;
+  padding: 15px !important;
+  border-radius: 5px;
+}
