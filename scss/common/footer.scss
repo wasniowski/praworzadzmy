@@ -2,28 +2,43 @@
 @import "../common/variables";
 
 #footer {
+  padding: 40px 0;
+
   .container {
-    &:nth-child(1) {
-      border-bottom: 1px solid $color-blue-dark;
+    display: grid;
+    grid-template-columns: 100px 270px 1fr 2fr;
+    grid-template-areas: "logo text social copy";
+    width: 1400px;
+
+    p, a {
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 600;
+      display: inline-block;
     }
 
-    &:nth-child(2) {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      grid-template-areas: "copy social links";
-      grid-column-gap: 40px;
-      min-height: 100px;
+    a {
+      margin-right: 20px;
+      border-bottom: 1px solid $text-color-dark;
+      color: $text-color-dark;
+      transition: all 0.4s;
+
+      &:hover {
+        color: $color-orange;
+        border-bottom: 1px solid $color-orange;
+      }
     }
 
     .logo {
       grid-area: logo;
-      padding: 40px 0;
-      .svg-bg {
-        background: url("../images/logo-black.svg") center center no-repeat;
-        background-size: 76px 40px;
-        width: 76px;
-        height: 40px;
-      }
+      display: flex;
+      align-items: center;
+    }
+
+    .text {
+      grid-area: text;
+      display: flex;
+      align-items: center;
     }
 
     .social {
@@ -31,32 +46,23 @@
       display: flex;
       align-items: center;
 
-      a {
-        text-decoration: none;
-        border: 0;
+      ul {
+        display: flex;
 
-        @include breakpoint(medium) {
-          margin-right: 50px;
+        li {
+          &:before {
+            display: none;
+          }
+
+          img {
+            height: 18px;
+            width: auto;
+          }
+
+          a {
+            border-bottom: none;
+          }
         }
-      }
-    }
-
-    .links {
-      grid-area: links;
-      display: flex;
-
-      @include breakpoint(medium) {
-        align-items: center;
-        justify-content: flex-end;
-      }
-
-      a {
-        margin-left: 20px;
-        font-size: 16px;
-        line-height: 21px;
-        text-decoration: none;
-        border-color: $text-color-dark;
-        color: $text-color-dark;
       }
     }
 
@@ -64,15 +70,7 @@
       grid-area: copy;
       display: flex;
       align-items: center;
-
-      p {
-        font-size: 14px;
-        line-height: 21px;
-
-        span {
-          margin-left: 20px;
-        }
-      }
+      justify-self: flex-end;
     }
   }
 }

@@ -64,30 +64,37 @@
 
 #navigation {
   position: relative;
-  height: 100px;
+  height: 80px;
 
   .wrapper {
+    background: $color-white;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 99;
 
+    &:after {
+      display: block;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      right: 0;
+      bottom: 0;
+      background: $color-brown-medium;
+    }
+
     .container {
       display: flex;
       align-items: center;
-      height: 100px;
+      justify-content: space-between;
+      height: 80px;
       transition: height 0.3s ease-in-out;
+      width: 1400px;
 
       .logo {
-        flex: 1;
-
-        .svg-bg{
-          background: url("../images/logo-white.svg") center center no-repeat;
-          background-size: 114px 60px;
-          width: 114px;
-          height: 60px;
-        }
+        width: 250px;
 
         img {
           transition: transform 0.3s ease-in-out;
@@ -95,6 +102,11 @@
       }
 
       .menu-elements {
+        background: $color-brown-medium;
+        height: 100%;
+        display: flex;
+        align-items: center;
+
         .menu-switcher {
           display: block;
           @include breakpoint(small) {
@@ -127,7 +139,7 @@
     }
 
     &.compact {
-      box-shadow: 0 0 1px 0 $color-grey-line;
+      box-shadow: 0 0 1px 0 $color-gray-light;
 
       .container {
         height: 70px;
@@ -165,7 +177,10 @@
       }
 
       li {
-        margin: 20px 0 20px 50px;
+        margin: 0 0 0 50px;
+        display: flex;
+        align-items: center;
+
         @include breakpoint(small) {
           margin-left: 20px;
         }
@@ -180,7 +195,7 @@
         a {
           text-decoration: none;
           border: none;
-          color: $color-white;
+          color: $text-color-dark;
           font-weight: 500;
           transition: color 0.4s;
           white-space: nowrap;
