@@ -1,0 +1,35 @@
+@import "../common/variables";
+
+.contact {
+  #contact {
+    background: url("../images/bg-contact-top.svg") calc(50% + 420px) top no-repeat;
+    margin-bottom: 100px;
+
+    .container {
+      min-height: 680px;
+
+      .slogan {
+        padding-right: 60%;
+        padding-top: 80px;
+
+        .title-dot {
+          margin: 0 0 20px 0;
+        }
+
+        p {
+          position: relative;
+          z-index: 2;
+          margin-bottom: 20px;
+          font-size: 16px;
+          line-height: 24px;
+
+          &:first-of-type {
+            font-size: 20px;
+            line-height: 32px;
+            margin-bottom: 30px;
+          }
+        }
+      }
+    }
+  }
+}

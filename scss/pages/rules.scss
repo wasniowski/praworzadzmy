@@ -1,0 +1,17 @@
+@import "../common/variables";
+
+.rules {
+  #rules {
+    .title-dot {
+      margin: 80px 0 20px 0;
+    }
+
+    .wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-column-gap: 20px;
+      grid-row-gap: 40px;
+      margin-bottom: 40px;
+    }
+  }
+}

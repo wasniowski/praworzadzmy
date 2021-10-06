@@ -1,0 +1,27 @@
+@import "../common/variables";
+
+.about {
+  #about {
+    background: url("../images/bg-about-top.svg") calc(50% + 500px) top no-repeat;
+    margin-bottom: 100px;
+
+    .container {
+      min-height: 576px;
+
+      .slogan {
+        padding-right: 40%;
+        padding-top: 80px;
+
+        .title-dot {
+          margin: 0 0 20px 0;
+        }
+
+        p {
+          position: relative;
+          z-index: 2;
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+}

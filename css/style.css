@@ -1343,6 +1343,64 @@ select:hover {
   height: auto;
 }
 
+.rules #rules .title-dot {
+  margin: 80px 0 20px 0;
+}
+.rules #rules .wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 40px;
+  margin-bottom: 40px;
+}
+
+.about #about {
+  background: url("../images/bg-about-top.svg") calc(50% + 500px) top no-repeat;
+  margin-bottom: 100px;
+}
+.about #about .container {
+  min-height: 576px;
+}
+.about #about .container .slogan {
+  padding-right: 40%;
+  padding-top: 80px;
+}
+.about #about .container .slogan .title-dot {
+  margin: 0 0 20px 0;
+}
+.about #about .container .slogan p {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 30px;
+}
+
+.contact #contact {
+  background: url("../images/bg-contact-top.svg") calc(50% + 420px) top no-repeat;
+  margin-bottom: 100px;
+}
+.contact #contact .container {
+  min-height: 680px;
+}
+.contact #contact .container .slogan {
+  padding-right: 60%;
+  padding-top: 80px;
+}
+.contact #contact .container .slogan .title-dot {
+  margin: 0 0 20px 0;
+}
+.contact #contact .container .slogan p {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 24px;
+}
+.contact #contact .container .slogan p:first-of-type {
+  font-size: 20px;
+  line-height: 32px;
+  margin-bottom: 30px;
+}
+
 html {
   color: #191B1D;
   font-size: 20px;
@@ -1414,7 +1472,7 @@ p {
 }
 
 .homepage #top {
-  background: url("../images/bg-hp-top.svg") calc(50% + 615px) top no-repeat;
+  background: url("../images/bg-hp-top.svg") calc(50% + 590px) top no-repeat;
   margin-bottom: 100px;
 }
 .homepage #top .container {
@@ -1546,28 +1604,6 @@ p {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 20px;
 }
-.homepage #rules .wrapper article img {
-  width: 100%;
-  height: auto;
-}
-.homepage #rules .wrapper article .flag {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-top: -40px;
-  margin-right: 15px;
-  float: right;
-  position: relative;
-  z-index: 2;
-}
-.homepage #rules .wrapper article h4 {
-  font-size: 24px;
-  line-height: 1.3;
-  text-transform: uppercase;
-  margin-top: 30px;
-  margin-right: 30%;
-}
 .homepage #newsletter {
   background: url("../images/bg-hp-newsletter.svg") calc(50% + 475px) top no-repeat;
   padding: 80px 0;
@@ -1679,6 +1715,29 @@ p {
 }
 #knowledge-base .wrapper article .color.violet {
   background: #C66AFF;
+}
+
+#rules .wrapper article img {
+  width: 100%;
+  height: auto;
+}
+#rules .wrapper article .flag {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-top: -40px;
+  margin-right: 15px;
+  float: right;
+  position: relative;
+  z-index: 2;
+}
+#rules .wrapper article h4 {
+  font-size: 24px;
+  line-height: 1.3;
+  text-transform: uppercase;
+  margin-top: 30px;
+  margin-right: 30%;
 }
 
 /*# sourceMappingURL=style.css.map */
