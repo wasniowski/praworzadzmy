@@ -12,6 +12,10 @@
 @import "helpers/calendarium";
 @import "helpers/page-helpers";
 
+@import "pages/dictionary";
+
+
+
 html {
   color: $text-color-dark;
   font-size: 20px;
@@ -176,6 +180,10 @@ p {
     .wrapper {
       display: grid;
       grid-template-columns: 1fr 1fr;
+
+      a {
+        color: $text-color-dark;
+      }
 
       .dots {
         display: flex;
