@@ -1,0 +1,33 @@
+@import "../common/variables";
+
+.partners {
+  #partners {
+    .title-dot {
+      margin: 80px 0 20px 0;
+      padding-right: 30%;
+    }
+
+    .wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-column-gap: 50px;
+      grid-row-gap: 60px;
+      margin-bottom: 60px;
+
+      article {
+        .image {
+          height: 140px;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          margin-bottom: 20px;
+        }
+
+        p {
+          font-size: 16px;
+          line-height: 24px;
+        }
+      }
+    }
+  }
+}

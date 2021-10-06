@@ -1401,6 +1401,95 @@ select:hover {
   margin-bottom: 30px;
 }
 
+.ambasadors #ambasadors .title-dot {
+  margin: 80px 0 20px 0;
+  padding-right: 30%;
+}
+.ambasadors #ambasadors .wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 50px;
+  grid-row-gap: 60px;
+  margin-bottom: 60px;
+}
+.ambasadors #ambasadors .wrapper article img {
+  width: 100%;
+  height: auto;
+}
+.ambasadors #ambasadors .wrapper article h4 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+  margin: 20px 0 10px 0;
+}
+.ambasadors #ambasadors .wrapper article p {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.partners #partners .title-dot {
+  margin: 80px 0 20px 0;
+  padding-right: 30%;
+}
+.partners #partners .wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 50px;
+  grid-row-gap: 60px;
+  margin-bottom: 60px;
+}
+.partners #partners .wrapper article .image {
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+.partners #partners .wrapper article p {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.team #team .title-dot {
+  margin: 80px 0 20px 0;
+  padding-right: 30%;
+}
+.team #team .wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 50px;
+  grid-row-gap: 60px;
+  margin-bottom: 60px;
+}
+.team #team .wrapper article img {
+  width: 100%;
+  height: auto;
+}
+.team #team .wrapper article h4 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+  margin: 20px 0 10px 0;
+}
+.team #team .wrapper article p {
+  font-size: 16px;
+  line-height: 24px;
+}
+.team #team .wrapper article .email {
+  margin-top: 30px;
+}
+.team #team .wrapper article .email h5 {
+  font-size: 12px;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+.team #team .wrapper article .email p {
+  font-size: 14px;
+  line-height: 24px;
+}
+
 html {
   color: #191B1D;
   font-size: 20px;
