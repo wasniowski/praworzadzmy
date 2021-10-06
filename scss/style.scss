@@ -14,7 +14,8 @@
 
 @import "pages/dictionary";
 @import "pages/infographics";
-
+@import "pages/knowledge-base";
+@import "pages/article";
 
 
 html {
@@ -78,7 +79,7 @@ body {
 }
 
 a {
-  color: $color-violet;
+  color: $text-color-dark;
   text-decoration: none;
   font-weight: 600;
 }
@@ -139,22 +140,6 @@ p {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       grid-column-gap: 20px;
-
-      article {
-        img {
-          width: 100%;
-          height: auto;
-          margin-bottom: 10px;
-        }
-        h4 {
-          font-size: 16px;
-          line-height: 1.5;
-          text-transform: uppercase;
-          padding: 15px;
-          background: $color-brown-light;
-          min-height: 78px;
-        }
-      }
     }
   }
 
@@ -241,55 +226,6 @@ p {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       grid-column-gap: 20px;
-
-      article {
-        & > img {
-          width: 100%;
-          height: auto;
-        }
-
-        h4 {
-          font-size: 20px;
-          line-height: 1.4;
-          text-transform: uppercase;
-          margin-bottom: 10px;
-          min-height: 56px;
-          display: flex;
-          align-items: flex-end;
-        }
-
-        .dot {
-          margin-left: 15px;
-        }
-
-        p {
-          font-size: 16px;
-          line-height: 1.5;
-          margin-bottom: 10px;
-          margin-right: 30%;
-        }
-
-        .color {
-          margin-top: 15px;
-          padding: 20px 30px;
-
-          &.yellow {
-            background: $color-yellow;
-          }
-
-          &.orange {
-            background: $color-orange;
-          }
-
-          &.green {
-            background: $color-green;
-          }
-
-          &.violet {
-            background: $color-violet;
-          }
-        }
-      }
     }
 
     .text-center {
@@ -411,6 +347,83 @@ p {
           color: $text-color-gray;
           font-weight: 700;
           border-bottom: 1px solid $text-color-gray;
+        }
+      }
+    }
+  }
+}
+
+#infographics {
+  .wrapper {
+    article {
+      img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+      }
+      h4 {
+        font-size: 16px;
+        line-height: 1.5;
+        text-transform: uppercase;
+        padding: 15px;
+        background: $color-brown-light;
+        min-height: 78px;
+      }
+    }
+  }
+}
+
+#knowledge-base {
+  .wrapper {
+    article {
+      & > img {
+        width: 100%;
+        height: auto;
+      }
+
+      h4 {
+        font-size: 20px;
+        line-height: 1.4;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        min-height: 56px;
+        display: flex;
+        align-items: flex-end;
+      }
+
+      a {
+        color: $text-color-dark;
+      }
+
+      .dot {
+        margin-left: 15px;
+      }
+
+      p {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 10px;
+        margin-right: 30%;
+      }
+
+      .color {
+        margin-top: 10px;
+        padding: 20px 30px;
+
+        &.yellow {
+          background: $color-yellow;
+        }
+
+        &.orange {
+          background: $color-orange;
+        }
+
+        &.green {
+          background: $color-green;
+        }
+
+        &.violet {
+          background: $color-violet;
         }
       }
     }
