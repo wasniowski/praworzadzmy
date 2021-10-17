@@ -1,4 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&family=Syncopate:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&display=swap");
+@font-face {
+  font-family: "syncopatebold";
+  src: url("../fonts/syncopate-bold-webfont.woff2") format("woff2"), url("../fonts/syncopate-bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -544,7 +550,7 @@ h3 {
 .menu-switcher {
   overflow: hidden;
   position: fixed;
-  top: 20px;
+  top: 10px;
   right: 15px;
   z-index: 101;
   width: 60px;
@@ -561,7 +567,7 @@ h3 {
   width: 30px;
   height: 2px;
   margin-left: -15px;
-  background-color: #FFFFFF;
+  background-color: #191B1D;
 }
 .menu-switcher .bar:nth-of-type(1) {
   margin-top: -8px;
@@ -573,7 +579,7 @@ h3 {
   margin-top: 8px;
 }
 .menu-switcher.active .bar {
-  background: #FFFFFF;
+  background: #191B1D;
 }
 .menu-switcher.active .bar:nth-of-type(1) {
   transform: rotate(45deg);
@@ -605,15 +611,17 @@ h3 {
   right: 0;
   z-index: 99;
 }
-#navigation .wrapper:after {
-  display: block;
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  right: 0;
-  bottom: 0;
-  background: #EFEEE9;
+@media only screen and (min-width: 992px) {
+  #navigation .wrapper:after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+    background: #EFEEE9;
+  }
 }
 #navigation .wrapper .container {
   display: flex;
@@ -621,7 +629,28 @@ h3 {
   justify-content: space-between;
   height: 80px;
   transition: height 0.3s ease-in-out;
-  width: 1400px;
+}
+@media only screen and (min-width: 768px) {
+  #navigation .wrapper .container {
+    width: 100%;
+    margin: 0 25px;
+  }
+}
+@media only screen and (min-width: 992px) {
+  #navigation .wrapper .container {
+    width: 960px;
+    margin: 0 auto;
+  }
+}
+@media only screen and (min-width: 1260px) {
+  #navigation .wrapper .container {
+    width: 1200px;
+  }
+}
+@media only screen and (min-width: 1460px) {
+  #navigation .wrapper .container {
+    width: 1400px;
+  }
 }
 #navigation .wrapper .container .logo {
   width: 250px;
@@ -638,14 +667,14 @@ h3 {
 #navigation .wrapper .container .menu-elements .menu-switcher {
   display: block;
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   #navigation .wrapper .container .menu-elements .menu-switcher {
     display: none;
   }
 }
 #navigation .wrapper .container .menu-elements .menu-wrapper {
   position: fixed;
-  background: #FF6E40;
+  background: #FBFAF5;
   top: 0;
   left: 100%;
   bottom: 0;
@@ -654,7 +683,7 @@ h3 {
   display: flex;
   transition: transform 0.25s ease-in-out;
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   #navigation .wrapper .container .menu-elements .menu-wrapper {
     position: static;
     background: none;
@@ -662,7 +691,7 @@ h3 {
   }
 }
 #navigation .wrapper .container .menu-elements .menu-wrapper.switched {
-  transform: translate3d(calc(-100% + 95px), 0, 0);
+  transform: translate3d(-100%, 0, 0);
 }
 #navigation .wrapper.compact {
   box-shadow: 0 0 1px 0 #F3F5F8;
@@ -676,7 +705,7 @@ h3 {
 #navigation .wrapper.compact .container .menu-elements .menu-switcher {
   transform: translateY(-17px);
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   #navigation nav {
     position: static;
     background: none;
@@ -690,7 +719,7 @@ h3 {
   justify-content: center;
   height: 100%;
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 992px) {
   #navigation nav ul {
     flex: 1;
     justify-content: flex-end;
@@ -698,18 +727,21 @@ h3 {
   }
 }
 #navigation nav ul li {
-  margin: 0 0 0 50px;
+  margin: 15px 0 0 20px;
   display: flex;
   align-items: center;
-}
-@media only screen and (min-width: 768px) {
-  #navigation nav ul li {
-    margin-left: 20px;
-  }
+  position: relative;
 }
 @media only screen and (min-width: 992px) {
   #navigation nav ul li {
-    margin-left: 42px;
+    margin: 0;
+    padding-left: 30px;
+  }
+}
+@media only screen and (min-width: 1260px) {
+  #navigation nav ul li {
+    padding-left: 20px;
+    margin: 0 0 0 42px;
   }
 }
 #navigation nav ul li:before {
@@ -729,23 +761,88 @@ h3 {
 #navigation nav ul li.current-menu-item a {
   color: #FF6E40;
 }
-#navigation.open .wrapper {
-  transform: none;
-  transition: none;
+#navigation nav ul li .sub-menu {
+  flex-direction: column;
+  padding: 0;
+  display: block;
+  position: relative;
 }
-#navigation.open nav {
-  opacity: 1;
-  visibility: visible;
+#navigation nav ul li .sub-menu:before {
+  content: "";
+  display: block;
+  width: 1px;
+  border-left: 1px dotted #191B1D;
+  position: absolute;
+  top: 22px;
+  bottom: 31px;
+  left: 10px;
+}
+@media only screen and (min-width: 992px) {
+  #navigation nav ul li .sub-menu:before {
+    display: none;
+  }
+}
+@media only screen and (min-width: 992px) {
+  #navigation nav ul li .sub-menu {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    background: #EFEEE9;
+    top: 26px;
+    left: -10px;
+    padding: 40px 0 20px 0;
+    display: none;
+  }
+}
+#navigation nav ul li .sub-menu li {
+  margin: 0;
+  padding: 15px 0 0 30px;
+}
+@media only screen and (min-width: 992px) {
+  #navigation nav ul li .sub-menu li {
+    padding: 5px 30px;
+  }
+}
+#navigation nav ul li.menu-item-has-children {
+  display: block;
+}
+@media only screen and (min-width: 992px) {
+  #navigation nav ul li.menu-item-has-children {
+    display: flex;
+    padding: 0 20px;
+    background: url("../images/chevron-black.svg") right center no-repeat;
+    background-size: 8px auto;
+  }
+}
+#navigation nav ul li.menu-item-has-children > a:hover {
+  color: #191B1D;
+  cursor: default;
+}
+#navigation nav ul li.menu-item-has-children:hover .sub-menu {
+  display: block;
 }
 
-#footer {
-  padding: 40px 0;
-}
 #footer .container {
   display: grid;
-  grid-template-columns: 100px 270px 1fr 2fr;
-  grid-template-areas: "logo text social copy";
-  width: 1400px;
+  grid-template-columns: 100px 1fr;
+  grid-template-areas: "logo text" "social social" "copy copy";
+  grid-row-gap: 20px;
+  border-top: 1px solid #191B1D;
+  padding: 20px 0;
+}
+@media only screen and (min-width: 1260px) {
+  #footer .container {
+    padding: 40px 0;
+    border: 0;
+    grid-template-columns: 100px 270px 1fr 2fr;
+    grid-template-areas: "logo text social copy";
+  }
+}
+@media only screen and (min-width: 1460px) {
+  #footer .container {
+    width: 1400px;
+  }
 }
 #footer .container p, #footer .container a {
   font-size: 12px;
@@ -773,13 +870,45 @@ h3 {
   display: flex;
   align-items: center;
 }
+@media only screen and (min-width: 576px) {
+  #footer .container .text {
+    justify-content: flex-end;
+    margin-left: 60%;
+    text-align: right;
+  }
+}
+@media only screen and (min-width: 1260px) {
+  #footer .container .text {
+    margin-left: 0;
+    text-align: left;
+  }
+}
 #footer .container .social {
   grid-area: social;
   display: flex;
   align-items: center;
 }
+@media only screen and (min-width: 768px) {
+  #footer .container .social {
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+}
+@media only screen and (min-width: 1260px) {
+  #footer .container .social {
+    margin-bottom: 0;
+  }
+}
 #footer .container .social ul {
   display: flex;
+}
+#footer .container .social ul li {
+  padding: 0;
+}
+@media only screen and (min-width: 768px) {
+  #footer .container .social ul li {
+    padding: 0 0 0 20px;
+  }
 }
 #footer .container .social ul li:before {
   display: none;
@@ -795,7 +924,37 @@ h3 {
   grid-area: copy;
   display: flex;
   align-items: center;
-  justify-self: flex-end;
+  flex-wrap: wrap;
+}
+@media only screen and (min-width: 768px) {
+  #footer .container .copy {
+    justify-content: space-between;
+  }
+}
+@media only screen and (min-width: 1260px) {
+  #footer .container .copy {
+    justify-content: flex-end;
+  }
+}
+#footer .container .copy p {
+  width: 100%;
+  margin-top: 15px;
+}
+@media only screen and (min-width: 768px) {
+  #footer .container .copy p {
+    width: auto;
+    margin-top: 0;
+  }
+}
+#footer .container .copy ul {
+  display: flex;
+}
+#footer .container .copy ul li {
+  padding: 0;
+  display: flex;
+}
+#footer .container .copy ul li:before {
+  display: none;
 }
 
 .form form {
@@ -907,10 +1066,22 @@ h3 {
 }
 
 .title {
-  font-size: 64px;
+  font-size: 20px;
   line-height: 1.2;
   text-transform: uppercase;
-  margin-left: -5px;
+  margin-bottom: 10px;
+}
+@media only screen and (min-width: 992px) {
+  .title {
+    font-size: 40px;
+    margin-left: -2px;
+  }
+}
+@media only screen and (min-width: 1260px) {
+  .title {
+    margin-left: -5px;
+    font-size: 64px;
+  }
 }
 
 .title-dot {
@@ -920,13 +1091,29 @@ h3 {
   content: "";
   display: block;
   position: absolute;
-  width: 160px;
-  height: 160px;
-  top: -40px;
-  left: -70px;
+  width: 100px;
+  height: 100px;
+  top: -20px;
+  left: -30px;
   border-radius: 50%;
   background: #F3F5F8;
   z-index: 0;
+}
+@media only screen and (min-width: 992px) {
+  .title-dot:before {
+    width: 130px;
+    height: 130px;
+    top: -25px;
+    left: -50px;
+  }
+}
+@media only screen and (min-width: 1260px) {
+  .title-dot:before {
+    width: 160px;
+    height: 160px;
+    top: -40px;
+    left: -70px;
+  }
 }
 .title-dot h2,
 .title-dot p {
@@ -936,8 +1123,13 @@ h3 {
 
 .lead {
   font-size: 16px;
-  line-height: 2;
+  line-height: 1.5;
   margin-bottom: 40px;
+}
+@media only screen and (min-width: 992px) {
+  .lead {
+    line-height: 2;
+  }
 }
 
 .dot {
@@ -957,6 +1149,7 @@ h3 {
   border-radius: 50%;
   z-index: 0;
   background: #FFFFFF;
+  transition: all 0.4s ease-in-out;
 }
 .dot img {
   margin-right: 20px;
@@ -965,7 +1158,7 @@ h3 {
   z-index: 1;
 }
 .dot span {
-  font-family: Syncopate;
+  font-family: "syncopatebold";
   font-weight: 700;
   font-size: 16px;
   line-height: 1.5;
@@ -1008,17 +1201,32 @@ h3 {
 .dot.green:before {
   background: #00E794;
 }
+.dot.green:hover:before {
+  background: #C66AFF;
+}
 .dot.violet:before {
   background: #C66AFF;
+}
+.dot.violet:hover:before {
+  background: #00E794;
 }
 .dot.yellow:before {
   background: #FFD600;
 }
+.dot.yellow:hover:before {
+  background: #FF6E40;
+}
 .dot.orange:before {
   background: #FF6E40;
 }
+.dot.orange:hover:before {
+  background: #FFD600;
+}
 .dot.gray:before {
   background: #D7DFE8;
+}
+.dot.gray:hover:before {
+  background: #F3F5F8;
 }
 
 select {
@@ -1049,6 +1257,7 @@ select:hover {
 .calendarium .viewport .years {
   display: flex;
   width: 100%;
+  transition: all 0.5s ease-in-out;
 }
 .calendarium .viewport .years .year {
   width: 600px;
@@ -1057,7 +1266,7 @@ select:hover {
   padding-bottom: 20px;
 }
 .calendarium .viewport .years .year p {
-  font-family: Syncopate;
+  font-family: "syncopatebold";
   font-weight: 700;
   font-size: 14px;
   line-height: 16px;
@@ -1080,23 +1289,11 @@ select:hover {
   padding: 0 0 0 5px;
   margin: 0;
   border-left: 1px solid #FFFFFF;
-  z-index: 1;
 }
 .calendarium .viewport .years .year ul li:before {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  left: -8px;
-  top: -8px;
-  z-index: 1;
-  background: #191B1D;
+  display: none;
 }
-.calendarium .viewport .years .year ul li:after {
-  content: "";
-  display: block;
+.calendarium .viewport .years .year ul li .calendarium-event-mark-bottom {
   position: absolute;
   width: 6px;
   height: 6px;
@@ -1104,26 +1301,49 @@ select:hover {
   left: -3px;
   bottom: -3px;
   z-index: 1;
-  background: #191B1D;
+  background-color: #D7DFE8;
 }
-.calendarium .viewport .years .year ul li span {
+.calendarium .viewport .years .year ul li .calendarium-event-title {
   display: block;
   font-size: 13px;
   line-height: 14px;
   position: relative;
   z-index: 10;
 }
-.calendarium .viewport .years .year ul li.violet:after, .calendarium .viewport .years .year ul li.violet:before {
-  background: #C66AFF;
+.calendarium .viewport .years .year ul li .calendarium-event-title .ce-mark-top {
+  position: absolute;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  left: -15px;
+  top: -12px;
+  z-index: 1;
+  background-color: #D7DFE8;
 }
-.calendarium .viewport .years .year ul li.green:after, .calendarium .viewport .years .year ul li.green:before {
-  background: #00E794;
+.calendarium .viewport .years .year ul li .calendarium-event-title .ce-mark-top-active {
+  position: absolute;
+  width: 31px;
+  height: 31px;
+  border-radius: 50%;
+  left: -21px;
+  top: -18px;
+  z-index: 2;
+  background-color: #EFEEE9;
+  border-width: 7px;
+  border-style: solid;
+  border-color: #D7DFE8;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
 }
-.calendarium .viewport .years .year ul li.orange:after, .calendarium .viewport .years .year ul li.orange:before {
-  background: #FF6E40;
+.calendarium .viewport .years .year ul li .calendarium-event-title span {
+  position: relative;
+  z-index: 11;
 }
-.calendarium .viewport .years .year ul li.yellow:after, .calendarium .viewport .years .year ul li.yellow:before {
-  background: #FFD600;
+.calendarium .viewport .years .year ul li .calendarium-event-title:hover, .calendarium .viewport .years .year ul li .calendarium-event-title.active {
+  cursor: pointer;
+}
+.calendarium .viewport .years .year ul li .calendarium-event-title:hover .ce-mark-top-active, .calendarium .viewport .years .year ul li .calendarium-event-title.active .ce-mark-top-active {
+  opacity: 1;
 }
 .calendarium .arrow {
   width: 62px;
@@ -1134,17 +1354,46 @@ select:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  top: calc(50% - 31px);
+  top: calc(100% - 41px);
+  transition: all 0.4s ease-in-out;
+}
+@media only screen and (min-width: 992px) {
+  .calendarium .arrow {
+    top: calc(50% - 31px);
+  }
+}
+.calendarium .arrow:hover {
+  background: #FF6E40;
+  cursor: pointer;
+}
+.calendarium .arrow.disabled {
+  background: #FFD600;
+  opacity: 0.4;
+}
+.calendarium .arrow.disabled:hover {
+  background: #FFD600;
+  cursor: default;
 }
 .calendarium .arrow.arrow-left {
-  left: -31px;
+  left: -20px;
+}
+@media only screen and (min-width: 992px) {
+  .calendarium .arrow.arrow-left {
+    left: -31px;
+  }
 }
 .calendarium .arrow.arrow-right {
-  right: -31px;
+  right: -20px;
+}
+@media only screen and (min-width: 992px) {
+  .calendarium .arrow.arrow-right {
+    right: -31px;
+  }
 }
 
 .agenda {
   display: flex;
+  flex-wrap: wrap;
 }
 .agenda p {
   font-size: 12px;
@@ -1153,6 +1402,7 @@ select:hover {
   position: relative;
   max-width: 120px;
   margin-right: 30px;
+  margin-bottom: 20px;
 }
 .agenda p:before {
   content: "";
@@ -1163,19 +1413,117 @@ select:hover {
   top: 6px;
   left: 0;
   border-radius: 2px;
-  background: #191B1D;
+  background-color: #959BA2;
 }
-.agenda p:nth-of-type(1):before {
-  background: #C66AFF;
+
+.calendarium-events {
+  position: absolute;
+  top: 0;
+  right: -41%;
+  bottom: 0;
+  overflow-y: scroll;
+  background: #FBFAF5;
+  width: 41%;
+  padding: 80px 40px 50px 60px;
+  z-index: 10;
+  transition: all 0.4s ease;
 }
-.agenda p:nth-of-type(2):before {
-  background: #FF6E40;
+.calendarium-events.opened {
+  right: 0;
 }
-.agenda p:nth-of-type(3):before {
-  background: #00E794;
+.calendarium-events .close-btn {
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  z-index: 11;
+  width: 60px;
+  height: 60px;
 }
-.agenda p:nth-of-type(4):before {
-  background: #FFD600;
+.calendarium-events .close-btn:hover {
+  cursor: pointer;
+}
+.calendarium-events .close-btn:hover .bar {
+  background-color: #FF6E40;
+}
+.calendarium-events .close-btn .bar {
+  transition: all 250ms ease;
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  margin-left: -15px;
+  background-color: #191B1D;
+}
+.calendarium-events .close-btn .bar:nth-of-type(1) {
+  transform: rotate(45deg);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -2px;
+}
+.calendarium-events .close-btn .bar:nth-of-type(2) {
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -2px;
+}
+.calendarium-events .calendarium-event-details {
+  display: none;
+  padding-right: 30px;
+  overflow-y: scroll;
+}
+.calendarium-events .calendarium-event-details.active {
+  display: block;
+  height: 100%;
+}
+.calendarium-events .calendarium-event-details .ced-header {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+.calendarium-events .calendarium-event-details .ced-header .ced-header-illustration {
+  max-width: 250px;
+}
+.calendarium-events .calendarium-event-details .ced-header .ced-header-illustration img {
+  width: 100%;
+  height: auto;
+}
+.calendarium-events .calendarium-event-details .ced-header .ced-header-content {
+  background: #FBFAF5;
+  background: linear-gradient(90deg, rgba(251, 250, 245, 0) 0%, #fbfaf5 25%, #fbfaf5 100%);
+  margin-left: -100px;
+  padding-left: 65px;
+}
+.calendarium-events .calendarium-event-details .ced-header .ced-header-content .ced-header-month {
+  background: #EFEEE9;
+  font-size: 14px;
+  line-height: 16px;
+  padding: 5px 20px 5px 7px;
+  display: inline-block;
+}
+.calendarium-events .calendarium-event-details .ced-header .ced-header-content .ced-header-year {
+  font-family: "syncopatebold";
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 40px;
+  color: #959BA2;
+  padding: 0 0 5px 0;
+}
+.calendarium-events .calendarium-event-details .ced-header .ced-header-content .ced-header-title {
+  font-family: "syncopatebold";
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 42px;
+  line-height: 42px;
+}
+.calendarium-events .calendarium-event-details .ced-description p {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 20px;
+}
+.calendarium-events .calendarium-event-details .ced-description p:last-of-type {
+  margin-bottom: 0;
 }
 
 .dictionary #dictionary .title-dot {
@@ -1206,7 +1554,7 @@ select:hover {
 .dictionary #dictionary .bg .alphabet li {
   margin: 0;
   padding: 0 20px 0 0;
-  font-family: Syncopate;
+  font-family: "syncopatebold";
   font-weight: 700;
   font-size: 20px;
   line-height: 32px;
@@ -1518,7 +1866,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Syncopate", sans-serif;
+  font-family: "syncopatebold", sans-serif;
 }
 
 ul {
@@ -1555,31 +1903,90 @@ p {
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
-  line-height: 32px;
+  line-height: 1.5;
   margin: 0;
   padding: 0;
 }
 
 .homepage #top {
-  background: url("../images/bg-hp-top.svg") calc(50% + 590px) top no-repeat;
-  margin-bottom: 100px;
+  background-image: url("../images/bg-hp-top.svg");
+  background-position: calc(50% + 300px) top;
+  background-size: auto 450px;
+  background-repeat: no-repeat;
+}
+@media only screen and (min-width: 768px) {
+  .homepage #top {
+    background-position: calc(50% + 390px) top;
+    background-size: auto 500px;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .homepage #top {
+    background-position: calc(50% + 440px) top;
+  }
+}
+@media only screen and (min-width: 1260px) {
+  .homepage #top {
+    background-position: calc(50% + 590px) top;
+    margin-bottom: 100px;
+  }
 }
 .homepage #top .container {
-  min-height: 575px;
+  min-height: 300px;
   display: flex;
   align-items: center;
+}
+@media only screen and (min-width: 768px) {
+  .homepage #top .container {
+    min-height: 500px;
+  }
+}
+@media only screen and (min-width: 1260px) {
+  .homepage #top .container {
+    min-height: 575px;
+  }
 }
 .homepage #top .container h1 {
   font-family: Mulish;
   font-weight: 600;
-  font-size: 40px;
+  font-size: 22px;
   line-height: 1.4;
-  max-width: 750px;
-  margin-bottom: 42px;
+  margin-right: 15%;
+}
+@media only screen and (min-width: 576px) {
+  .homepage #top .container h1 {
+    margin-right: 30%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .homepage #top .container h1 {
+    font-size: 30px;
+    margin-bottom: 42px;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .homepage #top .container h1 {
+    font-size: 40px;
+    margin-bottom: 42px;
+  }
+}
+@media only screen and (min-width: 1260px) {
+  .homepage #top .container h1 {
+    max-width: 750px;
+  }
+}
+.homepage #top .container .dot {
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+  .homepage #top .container .dot {
+    display: flex;
+  }
 }
 .homepage #calendarium {
   background: #EFEEE9;
   padding: 60px 0 40px 0;
+  position: relative;
 }
 .homepage #calendarium .title-dot:before {
   background: #FFFFFF;
@@ -1588,21 +1995,56 @@ p {
   height: 140px;
 }
 .homepage #calendarium .title {
-  font-size: 40px;
+  font-size: 20px;
   line-height: 1.6;
-  max-width: 900px;
+  margin-bottom: 10px;
+}
+@media only screen and (min-width: 992px) {
+  .homepage #calendarium .title {
+    font-size: 36px;
+    line-height: 1.4;
+    margin-bottom: 0;
+  }
+}
+@media only screen and (min-width: 1260px) {
+  .homepage #calendarium .title {
+    font-size: 40px;
+    line-height: 1.6;
+    max-width: 900px;
+  }
 }
 .homepage #infographics {
-  padding: 120px 0;
+  padding: 60px 0;
+}
+@media only screen and (min-width: 992px) {
+  .homepage #infographics {
+    padding: 80px 0;
+  }
+}
+@media only screen and (min-width: 1260px) {
+  .homepage #infographics {
+    padding: 120px 0;
+  }
 }
 .homepage #infographics .wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-column-gap: 20px;
+  grid-row-gap: 40px;
+}
+@media only screen and (min-width: 992px) {
+  .homepage #infographics .wrapper {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 .homepage #dictionary {
   position: relative;
-  padding: 80px 0;
+  padding: 60px 0 60px 25px;
+}
+@media only screen and (min-width: 992px) {
+  .homepage #dictionary {
+    padding: 80px 0;
+  }
 }
 .homepage #dictionary:before {
   content: "";
@@ -1611,16 +2053,36 @@ p {
   top: 0;
   bottom: 0;
   right: 0;
-  left: calc(50% - 480px);
+  left: 25px;
   background: #EFEEE9;
   z-index: -1;
+}
+@media only screen and (min-width: 768px) {
+  .homepage #dictionary:before {
+    left: calc(50% - 360px);
+  }
+}
+@media only screen and (min-width: 992px) {
+  .homepage #dictionary:before {
+    left: calc(50% - 350px);
+  }
+}
+@media only screen and (min-width: 1260px) {
+  .homepage #dictionary:before {
+    left: calc(50% - 480px);
+  }
 }
 .homepage #dictionary .title {
   max-width: 500px;
 }
 .homepage #dictionary .wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
+}
+@media only screen and (min-width: 992px) {
+  .homepage #dictionary .wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 .homepage #dictionary .wrapper a {
   color: #191B1D;
@@ -1628,22 +2090,95 @@ p {
 .homepage #dictionary .wrapper .dots {
   display: flex;
   align-items: flex-start;
+  flex-wrap: wrap;
   padding-left: 20px;
+  margin-left: -40px;
+  margin-right: -25px;
+}
+@media only screen and (min-width: 992px) {
+  .homepage #dictionary .wrapper .dots {
+    margin-left: 0;
+  }
 }
 .homepage #dictionary .wrapper .dots .dot {
-  margin-right: 60px;
+  margin-right: 25px;
+  margin-bottom: 30px;
+  padding: 14px 0;
+}
+@media only screen and (min-width: 992px) {
+  .homepage #dictionary .wrapper .dots .dot {
+    padding: 17px 0;
+    margin-right: 60px;
+  }
+}
+.homepage #dictionary .wrapper .dots .dot:before {
+  width: 70px;
+  height: 70px;
+}
+.homepage #dictionary .wrapper .dots .dot img {
+  margin-right: 10px;
+}
+@media only screen and (min-width: 992px) {
+  .homepage #dictionary .wrapper .dots .dot img {
+    margin-right: 15px;
+  }
 }
 .homepage #dictionary .wrapper .dots .dot span {
-  width: 140px;
+  width: 100px;
+}
+.homepage #dictionary .wrapper .dots .js-refresh-item-trigger:hover {
+  cursor: pointer;
 }
 .homepage #dictionary .wrapper .term {
-  padding: 0 60px;
+  position: relative;
+}
+@media only screen and (min-width: 992px) {
+  .homepage #dictionary .wrapper .term {
+    padding: 0 60px;
+  }
+}
+.homepage #dictionary .wrapper .term:after {
+  content: "Wczytywanie...";
+  width: 200px;
+  position: absolute;
+  top: calc(50% - 10px);
+  left: calc(50% - 100px);
+  text-align: center;
+  display: block;
+  color: #191B1D;
+  z-index: 2;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease-in-out;
+}
+.homepage #dictionary .wrapper .term:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  background: rgba(239, 238, 233, 0.9);
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease-in-out;
+}
+.homepage #dictionary .wrapper .term.loading:after, .homepage #dictionary .wrapper .term.loading:before {
+  visibility: visible;
+  opacity: 1;
 }
 .homepage #dictionary .wrapper h4 {
-  font-size: 24px;
+  font-size: 18px;
   line-height: 1.3;
   text-transform: uppercase;
   margin-bottom: 15px;
+}
+@media only screen and (min-width: 992px) {
+  .homepage #dictionary .wrapper h4 {
+    font-size: 24px;
+  }
 }
 .homepage #dictionary .wrapper p {
   margin-bottom: 15px;
@@ -1660,54 +2195,115 @@ p {
   margin-bottom: 15px;
 }
 .homepage #knowledge-base {
-  padding: 100px 0 80px 0;
+  padding: 60px 0;
+}
+@media only screen and (min-width: 992px) {
+  .homepage #knowledge-base {
+    padding: 100px 0 80px 0;
+  }
 }
 .homepage #knowledge-base .title {
   margin-bottom: 40px;
 }
 .homepage #knowledge-base .wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-column-gap: 20px;
+  grid-row-gap: 40px;
+}
+@media only screen and (min-width: 992px) {
+  .homepage #knowledge-base .wrapper {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 .homepage #knowledge-base .text-center {
   display: flex;
   justify-content: center;
   margin-top: 40px;
 }
-.homepage #knowledge-base .text-center .dot {
-  margin-left: 20px;
+@media only screen and (min-width: 992px) {
+  .homepage #knowledge-base .text-center .dot {
+    margin-left: 20px;
+  }
 }
 .homepage #knowledge-base .text-center .dot span {
   max-width: 230px;
 }
 .homepage #rules {
   background: #F3F5F8;
-  padding: 80px 0;
+  padding: 60px 0;
+}
+@media only screen and (min-width: 992px) {
+  .homepage #rules {
+    padding: 80px 0;
+  }
 }
 .homepage #rules .title {
   margin-right: 20%;
 }
 .homepage #rules .wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-column-gap: 20px;
+  grid-row-gap: 40px;
+}
+@media only screen and (min-width: 768px) {
+  .homepage #rules .wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .homepage #rules .wrapper {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }
 .homepage #newsletter {
-  background: url("../images/bg-hp-newsletter.svg") calc(50% + 475px) top no-repeat;
-  padding: 80px 0;
+  padding: 60px 0;
 }
-.homepage #newsletter .lead {
-  margin-right: 50%;
+@media only screen and (min-width: 992px) {
+  .homepage #newsletter {
+    background-image: url("../images/bg-hp-newsletter.svg");
+    background-position: calc(50% + 380px) top;
+    background-repeat: no-repeat;
+    padding: 80px 0;
+  }
 }
-.homepage #newsletter .newsletter {
-  margin-right: 45%;
+@media only screen and (min-width: 1260px) {
+  .homepage #newsletter {
+    background-position: calc(50% + 475px) top;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .homepage #newsletter .lead {
+    margin-right: 40%;
+  }
+}
+@media only screen and (min-width: 1260px) {
+  .homepage #newsletter .lead {
+    margin-right: 50%;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .homepage #newsletter .newsletter {
+    margin-right: 35%;
+  }
+}
+@media only screen and (min-width: 1260px) {
+  .homepage #newsletter .newsletter {
+    margin-right: 45%;
+  }
 }
 .homepage #newsletter .newsletter form {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr;
   grid-column-gap: 20px;
+  grid-row-gap: 10px;
   margin-bottom: 40px;
+}
+@media only screen and (min-width: 768px) {
+  .homepage #newsletter .newsletter form {
+    grid-template-columns: 2fr 1fr;
+  }
 }
 .homepage #newsletter .newsletter form input {
   border: none;
@@ -1729,15 +2325,29 @@ p {
   outline: none;
 }
 .homepage #newsletter .newsletter form button .dot {
-  margin-top: -12px;
-  padding: 27px 0;
+  padding: 17px 0;
+}
+@media only screen and (min-width: 992px) {
+  .homepage #newsletter .newsletter form button .dot {
+    margin-top: -12px;
+    padding: 27px 0;
+  }
 }
 .homepage #newsletter .newsletter form button .dot img {
   margin-top: 3px;
 }
+.homepage #newsletter .newsletter form button .dot span {
+  margin-top: 0;
+}
 .homepage #newsletter .newsletter form button .dot:before {
-  width: 76px;
-  height: 76px;
+  width: 56px;
+  height: 56px;
+}
+@media only screen and (min-width: 992px) {
+  .homepage #newsletter .newsletter form button .dot:before {
+    width: 76px;
+    height: 76px;
+  }
 }
 .homepage #newsletter .newsletter p {
   color: #959BA2;
@@ -1769,13 +2379,18 @@ p {
   height: auto;
 }
 #knowledge-base .wrapper article h4 {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.4;
   text-transform: uppercase;
   margin-bottom: 10px;
   min-height: 56px;
   display: flex;
   align-items: flex-end;
+}
+@media only screen and (min-width: 992px) {
+  #knowledge-base .wrapper article h4 {
+    font-size: 20px;
+  }
 }
 #knowledge-base .wrapper article a {
   color: #191B1D;
@@ -1787,11 +2402,20 @@ p {
   font-size: 16px;
   line-height: 1.5;
   margin-bottom: 10px;
-  margin-right: 30%;
+}
+@media only screen and (min-width: 992px) {
+  #knowledge-base .wrapper article p {
+    margin-right: 30%;
+  }
 }
 #knowledge-base .wrapper article .color {
   margin-top: 10px;
-  padding: 20px 30px;
+  padding: 15px 20px;
+}
+@media only screen and (min-width: 992px) {
+  #knowledge-base .wrapper article .color {
+    padding: 20px 30px;
+  }
 }
 #knowledge-base .wrapper article .color.yellow {
   background: #FFD600;
@@ -1822,11 +2446,16 @@ p {
   z-index: 2;
 }
 #rules .wrapper article h4 {
-  font-size: 24px;
+  font-size: 18px;
   line-height: 1.3;
   text-transform: uppercase;
   margin-top: 30px;
   margin-right: 30%;
+}
+@media only screen and (min-width: 992px) {
+  #rules .wrapper article h4 {
+    font-size: 24px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

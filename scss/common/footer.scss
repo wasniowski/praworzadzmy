@@ -2,13 +2,23 @@
 @import "../common/variables";
 
 #footer {
-  padding: 40px 0;
-
   .container {
     display: grid;
-    grid-template-columns: 100px 270px 1fr 2fr;
-    grid-template-areas: "logo text social copy";
-    width: 1400px;
+    grid-template-columns: 100px 1fr;
+    grid-template-areas: "logo text" "social social" "copy copy";
+    grid-row-gap: 20px;
+    border-top: 1px solid $text-color-dark;
+    padding: 20px 0;
+    @include breakpoint(medium) {}
+    @include breakpoint(large) {
+      padding: 40px 0;
+      border: 0;
+      grid-template-columns: 100px 270px 1fr 2fr;
+      grid-template-areas: "logo text social copy";
+    }
+    @include breakpoint(xlarge) {
+      width: 1400px;
+    }
 
     p, a {
       font-size: 12px;
@@ -39,17 +49,37 @@
       grid-area: text;
       display: flex;
       align-items: center;
+      @include breakpoint(xsmall) {
+        justify-content: flex-end;
+        margin-left: 60%;
+        text-align: right;
+      }
+      @include breakpoint(large) {
+        margin-left: 0;
+        text-align: left;
+      }
     }
 
     .social {
       grid-area: social;
       display: flex;
       align-items: center;
+      @include breakpoint(small) {
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+      @include breakpoint(large) {
+        margin-bottom: 0;
+      }
 
       ul {
         display: flex;
 
         li {
+          padding: 0;
+          @include breakpoint(small) {
+            padding: 0 0 0 20px;
+          }
           &:before {
             display: none;
           }
@@ -70,7 +100,35 @@
       grid-area: copy;
       display: flex;
       align-items: center;
-      justify-self: flex-end;
+      flex-wrap: wrap;
+      @include breakpoint(small) {
+        justify-content: space-between;
+      }
+      @include breakpoint(large) {
+        justify-content: flex-end;
+      }
+
+      p {
+        width: 100%;
+        margin-top: 15px;
+        @include breakpoint(small) {
+          width: auto;
+          margin-top: 0;
+        }
+      }
+
+      ul {
+        display: flex;
+
+        li {
+          padding: 0;
+          display: flex;
+
+          &:before {
+            display: none;
+          }
+        }
+      }
     }
   }
 }

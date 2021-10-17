@@ -1,4 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&family=Syncopate:wght@700&display=swap");
+@font-face {
+  font-family: 'syncopatebold';
+  src: url('../fonts/syncopate-bold-webfont.woff2') format('woff2'),
+  url('../fonts/syncopate-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&display=swap");
 
 @import "mixins/breakpoints";
 
@@ -52,7 +60,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Syncopate", sans-serif;
+  font-family: "syncopatebold", sans-serif;
 }
 
 ul {
@@ -94,27 +102,67 @@ p {
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
-  line-height: 32px;
+  line-height: 1.5;
   margin: 0;
   padding: 0;
 }
 
 .homepage {
   #top {
-    background: url("../images/bg-hp-top.svg") calc(50% + 590px) top no-repeat;
-    margin-bottom: 100px;
+    background-image: url("../images/bg-hp-top.svg");
+    background-position: calc(50% + 300px) top;
+    background-size: auto 450px;
+    background-repeat: no-repeat;
+
+    @include breakpoint(small) {
+      background-position: calc(50% + 390px) top;
+      background-size: auto 500px;
+    }
+    @include breakpoint(medium) {
+      background-position: calc(50% + 440px) top;
+    }
+    @include breakpoint(large) {
+      background-position: calc(50% + 590px) top;
+      margin-bottom: 100px;
+    }
     .container {
-      min-height: 575px;
+      min-height: 300px;
       display: flex;
       align-items: center;
+      @include breakpoint(small) {
+        min-height: 500px;
+      }
+      @include breakpoint(large) {
+        min-height: 575px;
+      }
 
       h1 {
         font-family: Mulish;
         font-weight: 600;
-        font-size: 40px;
+        font-size: 22px;
         line-height: 1.4;
-        max-width: 750px;
-        margin-bottom: 42px;
+        margin-right: 15%;
+        @include breakpoint(xsmall) {
+          margin-right: 30%;
+        }
+        @include breakpoint(small) {
+          font-size: 30px;
+          margin-bottom: 42px;
+        }
+        @include breakpoint(medium) {
+          font-size: 40px;
+          margin-bottom: 42px;
+        }
+        @include breakpoint(large) {
+          max-width: 750px;
+        }
+      }
+
+      .dot {
+        display: none;
+        @include breakpoint(small) {
+          display: flex;
+        }
       }
     }
   }
@@ -122,6 +170,8 @@ p {
   #calendarium {
     background: $color-brown-medium;
     padding: 60px 0 40px 0;
+    position: relative;
+    overflow: hidden;
 
     .title-dot {
       &:before {
@@ -133,25 +183,50 @@ p {
     }
 
     .title {
-      font-size: 40px;
+      font-size: 20px;
       line-height: 1.6;
-      max-width: 900px;
+      margin-bottom: 10px;
+      @include breakpoint(small) {}
+      @include breakpoint(medium) {
+        font-size: 36px;
+        line-height: 1.4;
+        margin-bottom: 0;
+      }
+      @include breakpoint(large) {
+        font-size: 40px;
+        line-height: 1.6;
+        max-width: 900px;
+
+      }
     }
   }
 
   #infographics {
-    padding: 120px 0;
-
+    padding: 60px 0;
+    @include breakpoint(medium) {
+      padding: 80px 0;
+    }
+    @include breakpoint(large) {
+      padding: 120px 0;
+    }
     .wrapper {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr;
       grid-column-gap: 20px;
+      grid-row-gap: 40px;
+      @include breakpoint(medium) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
     }
   }
 
   #dictionary {
     position: relative;
-    padding: 80px 0;
+    padding: 60px 0 60px 25px;
+    @include breakpoint(medium) {
+      padding: 80px 0;
+    }
 
     &:before {
       content: "";
@@ -160,9 +235,18 @@ p {
       top: 0;
       bottom: 0;
       right: 0;
-      left: calc(50% - 480px);
+      left: 25px;
       background: $color-brown-medium;
       z-index: -1;
+      @include breakpoint(small) {
+        left: calc(50% - 360px);
+      }
+      @include breakpoint(medium) {
+        left: calc(50% - 350px);
+      }
+      @include breakpoint(large) {
+        left: calc(50% - 480px);
+      }
     }
 
     .title {
@@ -171,7 +255,10 @@ p {
 
     .wrapper {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
+      @include breakpoint(medium) {
+        grid-template-columns: 1fr 1fr;
+      }
 
       a {
         color: $text-color-dark;
@@ -180,26 +267,103 @@ p {
       .dots {
         display: flex;
         align-items: flex-start;
+        flex-wrap: wrap;
         padding-left: 20px;
+        margin-left: -40px;
+        margin-right: -25px;
+        @include breakpoint(medium) {
+          margin-left: 0;
+        }
 
         .dot {
-          margin-right: 60px;
+          margin-right: 25px;
+          margin-bottom: 30px;
+          padding: 14px 0;
+          @include breakpoint(medium) {
+            padding: 17px 0;
+            margin-right: 60px;
+          }
+
+          &:before {
+            width: 70px;
+            height: 70px;
+          }
+
+          img{
+            margin-right: 10px;
+            @include breakpoint(medium) {
+              margin-right: 15px;
+            }
+          }
 
           span {
-            width: 140px;
+            width: 100px;
+            @include breakpoint(medium) {
+
+            }
+          }
+        }
+
+        .js-refresh-item-trigger {
+          &:hover {
+            cursor: pointer;
           }
         }
       }
 
       .term {
-        padding: 0 60px;
+        position: relative;
+        @include breakpoint(medium) {
+          padding: 0 60px;
+        }
+
+        &:after {
+          content: 'Wczytywanie...';
+          width: 200px;
+          position: absolute;
+          top: calc(50% - 10px);
+          left: calc(50% - 100px);
+          text-align: center;
+          display: block;
+          color: $text-color-dark;
+          z-index: 2;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.5s ease-in-out;
+        }
+
+        &:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          display: block;
+          background: rgba(239, 238, 233, 0.9);
+          z-index: 1;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.5s ease-in-out;
+        }
+
+        &.loading {
+          &:after,
+          &:before {
+            visibility: visible;
+            opacity: 1;
+          }
+        }
       }
 
       h4 {
-        font-size: 24px;
+        font-size: 18px;
         line-height: 1.3;
         text-transform: uppercase;
         margin-bottom: 15px;
+        @include breakpoint(medium) {
+          font-size: 24px;
+        }
       }
 
       p {
@@ -222,7 +386,10 @@ p {
   }
 
   #knowledge-base {
-    padding: 100px 0 80px 0;
+    padding: 60px 0;
+    @include breakpoint(medium) {
+      padding: 100px 0 80px 0;
+    }
 
     .title {
       margin-bottom: 40px;
@@ -230,8 +397,13 @@ p {
 
     .wrapper {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr;
       grid-column-gap: 20px;
+      grid-row-gap: 40px;
+
+      @include breakpoint(medium) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
     }
 
     .text-center {
@@ -240,7 +412,9 @@ p {
       margin-top: 40px;
 
       .dot{
-        margin-left: 20px;
+        @include breakpoint(medium) {
+          margin-left: 20px;
+        }
 
         span {
           max-width: 230px;
@@ -251,7 +425,10 @@ p {
 
   #rules {
     background: $color-gray-light;
-    padding: 80px 0;
+    padding: 60px 0;
+    @include breakpoint(medium) {
+      padding: 80px 0;
+    }
 
     .title {
       margin-right: 20%;
@@ -259,27 +436,56 @@ p {
 
     .wrapper {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr;
       grid-column-gap: 20px;
+      grid-row-gap: 40px;
+      @include breakpoint(small) {
+        grid-template-columns: 1fr 1fr;
+      }
+      @include breakpoint(medium) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
     }
   }
 
   #newsletter {
-    background: url("../images/bg-hp-newsletter.svg") calc(50% + 475px) top no-repeat;
-    padding: 80px 0;
+    padding: 60px 0;
+    @include breakpoint(medium) {
+      background-image: url("../images/bg-hp-newsletter.svg");
+      background-position: calc(50% + 380px) top;
+      background-repeat: no-repeat;
+      padding: 80px 0;
+    }
+    @include breakpoint(large) {
+      background-position: calc(50% + 475px) top;
+    }
 
     .lead {
-      margin-right: 50%;
+      @include breakpoint(medium) {
+        margin-right: 40%;
+      }
+      @include breakpoint(large) {
+        margin-right: 50%;
+      }
     }
 
     .newsletter {
-      margin-right: 45%;
+      @include breakpoint(medium) {
+        margin-right: 35%;
+      }
+      @include breakpoint(large) {
+        margin-right: 45%;
+      }
 
       form {
         display: grid;
-        grid-template-columns: 2fr 1fr;
+        grid-template-columns: 1fr;
         grid-column-gap: 20px;
+        grid-row-gap: 10px;
         margin-bottom: 40px;
+        @include breakpoint(small) {
+          grid-template-columns: 2fr 1fr;
+        }
 
         input {
           border: none;
@@ -302,16 +508,27 @@ p {
           outline: none;
 
           .dot {
-            margin-top: -12px;
-            padding: 27px 0;
+            padding: 17px 0;
+            @include breakpoint(medium) {
+              margin-top: -12px;
+              padding: 27px 0;
+            }
 
             img{
               margin-top: 3px;
             }
 
+            span {
+              margin-top: 0;
+            }
+
             &:before {
-              width: 76px;
-              height: 76px;
+              width: 56px;
+              height: 56px;
+              @include breakpoint(medium) {
+                width: 76px;
+                height: 76px;
+              }
             }
           }
         }
@@ -361,13 +578,16 @@ p {
       }
 
       h4 {
-        font-size: 20px;
+        font-size: 18px;
         line-height: 1.4;
         text-transform: uppercase;
         margin-bottom: 10px;
         min-height: 56px;
         display: flex;
         align-items: flex-end;
+        @include breakpoint(medium) {
+          font-size: 20px;
+        }
       }
 
       a {
@@ -382,12 +602,17 @@ p {
         font-size: 16px;
         line-height: 1.5;
         margin-bottom: 10px;
-        margin-right: 30%;
+        @include breakpoint(medium) {
+          margin-right: 30%;
+        }
       }
 
       .color {
         margin-top: 10px;
-        padding: 20px 30px;
+        padding: 15px 20px;
+        @include breakpoint(medium) {
+          padding: 20px 30px;
+        }
 
         &.yellow {
           background: $color-yellow;
@@ -430,11 +655,14 @@ p {
       }
 
       h4 {
-        font-size: 24px;
+        font-size: 18px;
         line-height: 1.3;
         text-transform: uppercase;
         margin-top: 30px;
         margin-right: 30%;
+        @include breakpoint(medium) {
+          font-size: 24px;
+        }
       }
     }
   }

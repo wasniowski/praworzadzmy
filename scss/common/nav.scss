@@ -4,7 +4,7 @@
 .menu-switcher {
   overflow: hidden;
   position: fixed;
-  top: 20px;
+  top: 10px;
   right: 15px;
   z-index: 101;
   width: 60px;
@@ -21,7 +21,7 @@
     width: 30px;
     height: 2px;
     margin-left: -15px;
-    background-color: $color-white;
+    background-color: $text-color-dark;
 
     &:nth-of-type(1) {
       margin-top: -8px;
@@ -38,7 +38,7 @@
 
   &.active {
     .bar {
-      background: $color-white;
+      background: $text-color-dark;
       &:nth-of-type(1) {
         transform: rotate(45deg);
         position: absolute;
@@ -75,14 +75,16 @@
     z-index: 99;
 
     &:after {
-      display: block;
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      right: 0;
-      bottom: 0;
-      background: $color-brown-medium;
+      @include breakpoint(medium) {
+        display: block;
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        right: 0;
+        bottom: 0;
+        background: $color-brown-medium;
+      }
     }
 
     .container {
@@ -91,7 +93,21 @@
       justify-content: space-between;
       height: 80px;
       transition: height 0.3s ease-in-out;
-      width: 1400px;
+      @include breakpoint(small) {
+        width: 100%;
+        margin: 0 25px;
+      }
+      @include breakpoint(medium) {
+        width: 960px;
+        margin: 0 auto;
+      }
+      @include breakpoint(large) {
+        width: 1200px;
+      }
+      @include breakpoint(xlarge) {
+        width: 1400px;
+      }
+
 
       .logo {
         width: 250px;
@@ -109,14 +125,14 @@
 
         .menu-switcher {
           display: block;
-          @include breakpoint(small) {
+          @include breakpoint(medium) {
             display: none;
           }
         }
 
         .menu-wrapper {
           position: fixed;
-          background: $color-orange;
+          background: $color-brown-light;
           top: 0;
           left: 100%;
           bottom: 0;
@@ -125,14 +141,14 @@
           display: flex;
           transition: transform 0.25s ease-in-out;
 
-          @include breakpoint(small) {
+          @include breakpoint(medium) {
             position: static;
             background: none;
             width: auto;
           }
 
           &.switched {
-            transform: translate3d(calc(-100% + 95px), 0, 0);
+            transform: translate3d(-100%, 0, 0);
           }
         }
       }
@@ -158,7 +174,7 @@
   }
 
   nav {
-    @include breakpoint(small) {
+    @include breakpoint(medium) {
       position: static;
       background: none;
       opacity: 1;
@@ -170,22 +186,27 @@
       flex-direction: column;
       justify-content: center;
       height: 100%;
-      @include breakpoint(small) {
+
+      @include breakpoint(medium) {
         flex: 1;
         justify-content: flex-end;
         flex-direction: row;
       }
 
       li {
-        margin: 0 0 0 50px;
+        margin: 15px 0 0 20px;
         display: flex;
         align-items: center;
+        position: relative;
 
-        @include breakpoint(small) {
-          margin-left: 20px;
-        }
         @include breakpoint(medium) {
-          margin-left: 42px;
+          margin: 0;
+          padding-left: 30px;
+        }
+
+        @include breakpoint(large) {
+          padding-left: 20px;
+          margin: 0 0 0 42px;
         }
 
         &:before {
@@ -204,23 +225,76 @@
             color: $color-orange;
           }
         }
+
         &.current-menu-item {
           a {
             color: $color-orange;
           }
         }
-      }
-    }
-  }
 
-  &.open {
-    .wrapper {
-      transform: none;
-      transition: none;
-    }
-    nav {
-      opacity: 1;
-      visibility: visible;
+        .sub-menu {
+          flex-direction: column;
+          padding: 0;
+          display: block;
+          position: relative;
+
+          &:before {
+            content: '';
+            display: block;
+            width: 1px;
+            border-left: 1px dotted $text-color-dark;
+            position: absolute;
+            top: 22px;
+            bottom: 31px;
+            left: 10px;
+            @include breakpoint(medium) {
+              display: none;
+            }
+          }
+          @include breakpoint(medium) {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            background: $color-brown-medium;
+            top: 26px;
+            left: -10px;
+            padding: 40px 0 20px 0;
+            display: none;
+          }
+
+          li {
+            margin: 0;
+            padding: 15px 0 0 30px;
+            @include breakpoint(medium) {
+              padding: 5px 30px;
+            }
+          }
+        }
+
+        &.menu-item-has-children{
+          display: block;
+          @include breakpoint(medium) {
+            display: flex;
+            padding: 0 20px;
+            background: url("../images/chevron-black.svg") right center no-repeat;
+            background-size: 8px auto;
+          }
+
+          & > a {
+            &:hover {
+              color: $text-color-dark;
+              cursor: default;
+            }
+          }
+
+          &:hover {
+            .sub-menu {
+              display: block;
+            }
+          }
+        }
+      }
     }
   }
 }

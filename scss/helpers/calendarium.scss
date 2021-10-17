@@ -1,170 +1,321 @@
 @import "../common/variables";
 
 .calendarium {
-  position: relative;
+    position: relative;
 
-  .viewport {
-    margin-bottom: 20px;
-    overflow: hidden;
+    .viewport {
+        margin-bottom: 20px;
+        overflow: hidden;
 
-    .years {
-      display: flex;
-      width: 100%;
+        .years {
+            display: flex;
+            width: 100%;
+            transition: all 0.5s ease-in-out;
 
-      .year {
-        width: 600px;
-        border-left: 1px dotted $text-color-dark;
-        box-shadow: inset 0px -20px 0px 0px $color-white;
-        padding-bottom: 20px;
+            .year {
+                width: 600px;
+                border-left: 1px dotted $text-color-dark;
+                box-shadow: inset 0px -20px 0px 0px $color-white;
+                padding-bottom: 20px;
 
-        p {
-          font-family: Syncopate;
-          font-weight: 700;
-          font-size: 14px;
-          line-height: 16px;
-          padding: 5px;
-          letter-spacing: 0.04em;
-          text-transform: uppercase;
+                p {
+                    font-family: 'syncopatebold';
+                    font-weight: 700;
+                    font-size: 14px;
+                    line-height: 16px;
+                    padding: 5px;
+                    letter-spacing: 0.04em;
+                    text-transform: uppercase;
+                }
+
+                ul {
+                    position: relative;
+                    display: block;
+                    height: 100%;
+                    margin: 0;
+                    padding: 0;
+                    min-height: 300px;
+
+                    li {
+                        position: absolute;
+                        bottom: 25px;
+                        max-width: 200px;
+                        padding: 0 0 0 5px;
+                        margin: 0;
+                        border-left: 1px solid $color-white;
+
+                        &:before {
+                            display: none;
+                        }
+
+                        .calendarium-event-mark-bottom {
+                            position: absolute;
+                            width: 6px;
+                            height: 6px;
+                            border-radius: 50%;
+                            left: -3px;
+                            bottom: -3px;
+                            z-index: 1;
+                            background-color: $color-gray-medium;
+                        }
+
+                        .calendarium-event-title {
+                            display: block;
+                            font-size: 13px;
+                            line-height: 14px;
+                            position: relative;
+                            z-index: 10;
+
+                            .ce-mark-top {
+                                position: absolute;
+                                width: 19px;
+                                height: 19px;
+                                border-radius: 50%;
+                                left: -15px;
+                                top: -12px;
+                                z-index: 1;
+                                background-color: $color-gray-medium;
+                            }
+
+                            .ce-mark-top-active {
+                                position: absolute;
+                                width: 31px;
+                                height: 31px;
+                                border-radius: 50%;
+                                left: -21px;
+                                top: -18px;
+                                z-index: 2;
+                                background-color: $color-brown-medium;
+                                border-width: 7px;
+                                border-style: solid;
+                                border-color: $color-gray-medium;
+                                opacity: 0;
+                                transition: opacity 0.4s ease-in-out;
+                            }
+
+                            span {
+                                position: relative;
+                                z-index: 11;
+                            }
+
+                            &:hover, &.active {
+                                cursor: pointer;
+
+                                .ce-mark-top-active {
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .arrow {
+        width: 62px;
+        height: 62px;
+        background: $color-yellow;
+        border-radius: 50%;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: calc(100% - 41px);
+        transition: all 0.4s ease-in-out;
+        @include breakpoint(medium) {
+            top: calc(50% - 31px);
         }
 
-        ul {
-          position: relative;
-          display: block;
-          height: 100%;
-          margin: 0;
-          padding: 0;
-          min-height: 300px;
-
-          li {
-            position: absolute;
-            bottom: 25px;
-            max-width: 200px;
-            padding: 0 0 0 5px;
-            margin: 0;
-            border-left: 1px solid $color-white;
-            z-index: 1;
-
-            &:before {
-              content: '';
-              display: block;
-              position: absolute;
-              width: 16px;
-              height: 16px;
-              border-radius: 50%;
-              left: -8px;
-              top: -8px;
-              z-index: 1;
-              background: $text-color-dark;
-            }
-
-            &:after {
-              content: '';
-              display: block;
-              position: absolute;
-              width: 6px;
-              height: 6px;
-              border-radius: 50%;
-              left: -3px;
-              bottom: -3px;
-              z-index: 1;
-              background: $text-color-dark;
-            }
-
-            span {
-              display: block;
-              font-size: 13px;
-              line-height: 14px;
-              position: relative;
-              z-index: 10;
-            }
-
-            &.violet {
-              &:after, &:before { background: $color-violet }
-            }
-
-            &.green {
-              &:after, &:before { background: $color-green }
-            }
-
-            &.orange {
-              &:after, &:before { background: $color-orange }
-            }
-
-            &.yellow {
-              &:after, &:before { background: $color-yellow }
-            }
-          }
+        &:hover {
+            background: $color-orange;
+            cursor: pointer;
         }
-      }
-    }
-  }
 
-  .arrow {
-    width: 62px;
-    height: 62px;
-    background: $color-yellow;
-    border-radius: 50%;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: calc(50% - 31px);
+        &.disabled {
+            background: $color-yellow;
+            opacity: 0.4;
 
-    &.arrow-left {
-      left: -31px;
-    }
+            &:hover {
+                background: $color-yellow;
+                cursor: default;
+            }
+        }
 
-    &.arrow-right {
-      right: -31px;
+        &.arrow-left {
+            left: -20px;
+
+            @include breakpoint(medium) {
+                left: -31px;
+            }
+        }
+
+        &.arrow-right {
+            right: -20px;
+            @include breakpoint(medium) {
+                right: -31px;
+            }
+        }
     }
-  }
 }
 
 .agenda {
-  display: flex;
+    display: flex;
+    flex-wrap: wrap;
 
-  p {
-    font-size: 12px;
-    line-height: 16px;
-    padding-left: 30px;
-    position: relative;
-    max-width: 120px;
-    margin-right: 30px;
+    p {
+        font-size: 12px;
+        line-height: 16px;
+        padding-left: 30px;
+        position: relative;
+        max-width: 120px;
+        margin-right: 30px;
+        margin-bottom: 20px;
 
-    &:before {
-      content: '';
-      display: block;
-      width: 20px;
-      height: 4px;
-      position: absolute;
-      top: 6px;
-      left: 0;
-      border-radius: 2px;
-      background: $text-color-dark;
+        &:before {
+            content: "";
+            display: block;
+            width: 20px;
+            height: 4px;
+            position: absolute;
+            top: 6px;
+            left: 0;
+            border-radius: 2px;
+            background-color: $text-color-gray;
+        }
+    }
+}
+
+.calendarium-events {
+    position: absolute;
+    top: 0;
+    right: -41%;
+    bottom: 0;
+    overflow-y: scroll;
+    background: $color-brown-light;
+    width: 41%;
+    padding: 80px 40px 50px 60px;
+    z-index: 10;
+    transition: all 0.4s ease;
+
+    &.opened {
+        right: 0;
     }
 
-    &:nth-of-type(1) {
-      &:before {
-        background: $color-violet;
-      }
+    .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 15px;
+        z-index: 11;
+        width: 60px;
+        height: 60px;
+
+        &:hover {
+            cursor: pointer;
+
+            .bar {
+                background-color: $color-orange;
+            }
+        }
+
+        .bar {
+            transition: all 250ms ease;
+            display: block;
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            margin-left: -15px;
+            background-color: $text-color-dark;
+
+            &:nth-of-type(1) {
+                transform: rotate(45deg);
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-top: -2px;
+            }
+
+            &:nth-of-type(2) {
+                transform: rotate(-45deg);
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-top: -2px;
+            }
+        }
     }
 
-    &:nth-of-type(2) {
-      &:before {
-        background: $color-orange;
-      }
-    }
+    .calendarium-event-details {
+        display: none;
+        padding-right: 30px;
+        overflow-y: scroll;
 
-    &:nth-of-type(3) {
-      &:before {
-        background: $color-green;
-      }
-    }
+        &.active {
+            display: block;
+            height: 100%;
+        }
 
-    &:nth-of-type(4) {
-      &:before {
-        background: $color-yellow;
-      }
+        .ced-header {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 20px;
+
+            .ced-header-illustration {
+                max-width: 250px;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+
+            .ced-header-content {
+                background: $color-brown-light;
+                background: linear-gradient(
+                    90deg,
+                    rgba(251, 250, 245, 0) 0%,
+                    rgba(251, 250, 245, 1) 25%,
+                    rgba(251, 250, 245, 1) 100%
+                );
+                margin-left: -100px;
+                padding-left: 65px;
+
+                .ced-header-month {
+                    background: $color-brown-medium;
+                    font-size: 14px;
+                    line-height: 16px;
+                    padding: 5px 20px 5px 7px;
+                    display: inline-block;
+                }
+
+                .ced-header-year {
+                    font-family: 'syncopatebold';
+                    font-weight: bold;
+                    font-size: 28px;
+                    line-height: 40px;
+                    color: $text-color-gray;
+                    padding: 0 0 5px 0;
+                }
+
+                .ced-header-title {
+                    font-family: 'syncopatebold';
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    font-size: 42px;
+                    line-height: 42px;
+                }
+            }
+        }
+        .ced-description {
+            p {
+                font-size: 14px;
+                line-height: 20px;
+                margin-bottom: 20px;
+
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+            }
+        }
     }
-  }
 }

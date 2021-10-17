@@ -5,10 +5,18 @@
 }
 
 .title {
-  font-size: 64px;
+  font-size: 20px;
   line-height: 1.2;
   text-transform: uppercase;
-  margin-left: -5px;
+  margin-bottom: 10px;
+  @include breakpoint(medium) {
+    font-size: 40px;
+    margin-left: -2px;
+  }
+  @include breakpoint(large) {
+    margin-left: -5px;
+    font-size: 64px;
+  }
 }
 
 .title-dot {
@@ -18,13 +26,26 @@
     content: "";
     display: block;
     position: absolute;
-    width: 160px;
-    height: 160px;
-    top: -40px;
-    left: -70px;
+    width: 100px;
+    height: 100px;
+    top: -20px;
+    left: -30px;
     border-radius: 50%;
     background: $color-gray-light;
     z-index: 0;
+
+    @include breakpoint(medium) {
+      width: 130px;
+      height: 130px;
+      top: -25px;
+      left: -50px;
+    }
+    @include breakpoint(large) {
+      width: 160px;
+      height: 160px;
+      top: -40px;
+      left: -70px;
+    }
   }
 
   h2,
@@ -36,8 +57,11 @@
 
 .lead {
   font-size: 16px;
-  line-height: 2;
+  line-height: 1.5;
   margin-bottom: 40px;
+  @include breakpoint(medium) {
+    line-height: 2;
+  }
 }
 
 .dot {
@@ -57,6 +81,7 @@
     border-radius: 50%;
     z-index: 0;
     background: $color-white;
+    transition: all 0.4s ease-in-out;
   }
 
   img {
@@ -67,7 +92,7 @@
   }
 
   span {
-    font-family: Syncopate;
+    font-family: 'syncopatebold';
     font-weight: 700;
     font-size: 16px;
     line-height: 1.5;
@@ -119,11 +144,23 @@
     &:before {
       background: $color-green;
     }
+
+    &:hover {
+      &:before {
+        background: $color-violet;
+      }
+    }
   }
 
   &.violet {
     &:before {
       background: $color-violet;
+    }
+
+    &:hover {
+      &:before {
+        background: $color-green;
+      }
     }
   }
 
@@ -131,17 +168,35 @@
     &:before {
       background: $color-yellow;
     }
+
+    &:hover {
+      &:before {
+        background: $color-orange;
+      }
+    }
   }
 
   &.orange {
     &:before {
       background: $color-orange;
     }
+
+    &:hover {
+      &:before {
+        background: $color-yellow;
+      }
+    }
   }
 
   &.gray {
     &:before {
       background: $color-gray-medium;
+    }
+
+    &:hover {
+      &:before {
+        background: $color-gray-light;
+      }
     }
   }
 }

@@ -3,7 +3,8 @@ $breakpoints: (
         xsmall: 576,
         small: 768,
         medium: 992,
-        large: 1260
+        large: 1260,
+        xlarge: 1460
 );
 
 @function map-next($map, $key) {
