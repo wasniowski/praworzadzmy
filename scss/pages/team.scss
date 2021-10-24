@@ -1,18 +1,25 @@
 @import "../common/variables";
+@import "../mixins/breakpoints";
 
 .team {
   #team {
     .title-dot {
-      margin: 80px 0 20px 0;
-      padding-right: 30%;
+      margin: 20px 0;
+      @include breakpoint(medium) {
+        margin: 80px 0 20px 0;
+        padding-right: 30%;
+      }
     }
 
     .wrapper {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr;
       grid-column-gap: 50px;
       grid-row-gap: 60px;
       margin-bottom: 60px;
+      @include breakpoint(medium) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
 
       article {
         img {

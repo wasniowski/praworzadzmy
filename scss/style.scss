@@ -108,61 +108,76 @@ p {
 }
 
 .homepage {
+  #navigation {
+    .wrapper {
+      background: $color-gray-medium;
+      &:after {
+        @include breakpoint(medium) {
+          background: $color-white;
+        }
+      }
+
+      .menu-elements {
+        background: $color-white;
+      }
+    }
+    nav ul li {
+      .sub-menu {
+        @include breakpoint(medium) {
+          background: $color-white;
+        }
+      }
+    }
+  }
+
   #top {
-    background-image: url("../images/bg-hp-top.svg");
-    background-position: calc(50% + 300px) top;
+    background-image: url("../images/bg-new-top.svg");
+    background-color: $color-gray-medium;
+    background-position: center center;
     background-size: auto 450px;
     background-repeat: no-repeat;
-
+    text-align: center;
     @include breakpoint(small) {
-      background-position: calc(50% + 390px) top;
       background-size: auto 500px;
     }
     @include breakpoint(medium) {
-      background-position: calc(50% + 440px) top;
+      background-size: auto 650px;
+      background-position: center 60px;
     }
     @include breakpoint(large) {
-      background-position: calc(50% + 590px) top;
-      margin-bottom: 100px;
     }
     .container {
-      min-height: 300px;
+      min-height: 600px;
       display: flex;
       align-items: center;
-      @include breakpoint(small) {
-        min-height: 500px;
-      }
-      @include breakpoint(large) {
-        min-height: 575px;
+      justify-content: center;
+      @include breakpoint(medium) {
+        min-height: 620px;
       }
 
       h1 {
         font-family: Mulish;
         font-weight: 600;
-        font-size: 22px;
+        font-size: 28px;
         line-height: 1.4;
-        margin-right: 15%;
-        @include breakpoint(xsmall) {
-          margin-right: 30%;
-        }
+        margin: 0 auto 42px 0;
         @include breakpoint(small) {
-          font-size: 30px;
+          font-size: 38px;
           margin-bottom: 42px;
         }
         @include breakpoint(medium) {
-          font-size: 40px;
+          font-size: 48px;
+          margin-top: 80px;
           margin-bottom: 42px;
         }
         @include breakpoint(large) {
-          max-width: 750px;
+          font-size: 56px;
+          max-width: 850px;
         }
       }
 
       .dot {
-        display: none;
-        @include breakpoint(small) {
-          display: flex;
-        }
+        display: inline-flex;
       }
     }
   }
@@ -582,11 +597,12 @@ p {
         line-height: 1.4;
         text-transform: uppercase;
         margin-bottom: 10px;
-        min-height: 56px;
         display: flex;
         align-items: flex-end;
         @include breakpoint(medium) {
           font-size: 20px;
+          align-items: flex-end;
+          min-height: 56px;
         }
       }
 
@@ -602,7 +618,7 @@ p {
         font-size: 16px;
         line-height: 1.5;
         margin-bottom: 10px;
-        @include breakpoint(medium) {
+        @include breakpoint(large) {
           margin-right: 30%;
         }
       }

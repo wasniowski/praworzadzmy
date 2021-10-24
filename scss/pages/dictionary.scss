@@ -1,9 +1,13 @@
 @import "../common/variables";
+@import "../mixins/breakpoints";
 
 .dictionary {
   #dictionary {
     .title-dot {
-      margin: 80px 0;
+      margin: 20px 0 40px 0;
+      @include breakpoint(medium) {
+        margin: 80px 0;
+      }
     }
 
     .bg {
@@ -16,18 +20,25 @@
         position: absolute;
         top: 0;
         left: 0;
-        right: calc(50% - 460px);
-        bottom: 0;
+        right: calc(50% - 480px);
+        bottom: 40px;
         background: $color-brown-medium;
         z-index: -1;
+        @include breakpoint(large) {
+          right: calc(50% - 460px);
+          bottom: 0;
+        }
       }
 
       .container {
-        padding-right: 200px;
+        @include breakpoint(medium) {
+          padding-right: 200px;
+        }
       }
 
       .alphabet {
         display: flex;
+        flex-wrap: wrap;
         margin-bottom: 40px;
         li {
           margin: 0;
@@ -35,7 +46,7 @@
           font-family: 'syncopatebold';
           font-weight: 700;
           font-size: 20px;
-          line-height: 32px;
+          line-height: 50px;
           text-transform: uppercase;
 
           &:before {

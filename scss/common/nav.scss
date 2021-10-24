@@ -83,7 +83,7 @@
         left: 50%;
         right: 0;
         bottom: 0;
-        background: $color-brown-medium;
+        background: $color-gray-medium;
       }
     }
 
@@ -118,7 +118,7 @@
       }
 
       .menu-elements {
-        background: $color-brown-medium;
+        background: $color-gray-medium;
         height: 100%;
         display: flex;
         align-items: center;
@@ -237,6 +237,17 @@
           padding: 0;
           display: block;
           position: relative;
+          @include breakpoint(medium) {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            background: $color-gray-medium;
+            top: 26px;
+            left: -10px;
+            padding: 40px 0 20px 0;
+            display: none;
+          }
 
           &:before {
             content: '';
@@ -250,17 +261,6 @@
             @include breakpoint(medium) {
               display: none;
             }
-          }
-          @include breakpoint(medium) {
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            height: auto;
-            background: $color-brown-medium;
-            top: 26px;
-            left: -10px;
-            padding: 40px 0 20px 0;
-            display: none;
           }
 
           li {

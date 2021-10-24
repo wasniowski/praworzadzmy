@@ -1,16 +1,30 @@
 @import "../common/variables";
+@import "../mixins/breakpoints";
 
 .contact {
   #contact {
-    background: url("../images/bg-contact-top.svg") calc(50% + 420px) top no-repeat;
-    margin-bottom: 100px;
+    margin-bottom: 20px;
+    @include breakpoint(medium) {
+      background-image: url("../images/bg-contact-top.svg");
+      background-position: calc(50% + 290px) top;
+      background-repeat: no-repeat;
+      margin-bottom: 100px;
+    }
+    @include breakpoint(large) {
+      background-position: calc(50% + 420px) top;
+    }
 
     .container {
-      min-height: 680px;
+      @include breakpoint(medium) {
+        min-height: 680px;
+      }
 
       .slogan {
-        padding-right: 60%;
-        padding-top: 80px;
+        padding-top: 20px;
+        @include breakpoint(medium) {
+          padding-right: 60%;
+          padding-top: 80px;
+        }
 
         .title-dot {
           margin: 0 0 20px 0;
