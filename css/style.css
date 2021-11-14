@@ -1260,8 +1260,7 @@ select:hover {
   transition: all 0.5s ease-in-out;
 }
 .calendarium .viewport .years .year {
-  width: 600px;
-  border-left: 1px dotted #191B1D;
+  border-left: 1px dotted #cFcEc9;
   box-shadow: inset 0px -20px 0px 0px #FFFFFF;
   padding-bottom: 20px;
 }
@@ -1280,12 +1279,10 @@ select:hover {
   height: 100%;
   margin: 0;
   padding: 0;
-  min-height: 300px;
 }
 .calendarium .viewport .years .year ul li {
   position: absolute;
   bottom: 25px;
-  max-width: 200px;
   padding: 0 0 0 5px;
   margin: 0;
   border-left: 1px solid #FFFFFF;
@@ -1337,6 +1334,7 @@ select:hover {
 }
 .calendarium .viewport .years .year ul li .calendarium-event-title span {
   position: relative;
+  display: block;
   z-index: 11;
 }
 .calendarium .viewport .years .year ul li .calendarium-event-title:hover, .calendarium .viewport .years .year ul li .calendarium-event-title.active {

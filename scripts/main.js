@@ -38,25 +38,110 @@
         yearsWidth: 0,
         yearSelector: ".calendarium .year",
         yearWidth: 600,
+        yearHeight: 340,
         yearCount: 0,
         currentPosition: 0,
+        itemWidth: 190,
         visibleItems: 2,
         disabledClass: "disabled",
 
         init: function () {
             const _self = this;
             _self.calculateYearsWidth();
+            _self.drawItems();
             _self.attachListeners();
         },
 
         calculateYearsWidth: function () {
             const _self = this;
+            // ilość lat
             _self.yearCount = $(_self.yearSelector).length;
+            // obliczamy szerokość viewportu
             _self.yearsWidth = _self.yearCount * _self.yearWidth;
             $(_self.yearsSelector).css({ width: `${_self.yearsWidth}px` });
             $(_self.yearSelector).each(function () {
-                $(this).css({ width: `${_self.yearWidth}px` });
+                $(this).css({ width: `${_self.yearWidth}px`, height: `${_self.yearHeight}px` });
             });
+        },
+
+        drawItems: function () {
+            const _self = this;
+            $(_self.yearSelector).each(function () {
+                const list = $(this).find('ul li');
+                let lastItemHeight = 20;
+                let elementCount = list.length;
+
+                list.each(function (index) {
+                    $(this).css({ width: `${_self.itemWidth}px` });
+
+                    const item = $(this);
+                    const itemIndex = index;
+
+                    setTimeout(function (){
+                        const itemHeight = item.height();
+                        const dayOfTheYear = item.data('dayOfTheYear') + 1;
+                        const position = Math.round((dayOfTheYear / 356) * (_self.yearWidth - 130)) + 20;
+                        item.css({
+                            paddingBottom: `${lastItemHeight}px`,
+                            transform: `translateX(${position}px)`,
+                            zIndex: elementCount
+                        });
+                        lastItemHeight += itemHeight + 16;
+                        elementCount -= 1;
+                        if (lastItemHeight > 240) {
+                            lastItemHeight = 20;
+                            elementCount = list.length;
+                        }
+                    },100)
+
+                    setTimeout( function (){
+                        list.each(function (index) {
+                            if ((item.data('dayOfTheYear') != $(this).data('dayOfTheYear')) && itemIndex > index){
+                                const isCollision = _self.overlaps(item.find('span'), $(this).find('span'));
+                                if (isCollision) {
+                                    const dayOfTheYear = $(this).data('dayOfTheYear') + 1;
+                                    const position = Math.round((dayOfTheYear / 356) * (_self.yearWidth - 130)) + 220;
+
+                                    item.css({
+                                        transform: `translateX(${position}px)`,
+                                    });
+                                }
+                            }
+                        })
+                    }, 200)
+                })
+            });
+        },
+
+        overlaps: function (a, b) {
+            // function getPositions( elem ) {
+            //     let pos, width, height;
+            //     pos = $( elem ).position();
+            //     width = $( elem ).width() / 2;
+            //     height = $( elem ).height();
+            //     console.log(pos, width, height);
+            //     return [ [ pos.left, pos.left + width ], [ pos.top, pos.top + height ] ];
+            // }
+            //
+            // function comparePositions( p1, p2 ) {
+            //     let r1, r2;
+            //     r1 = p1[0] < p2[0] ? p1 : p2;
+            //     r2 = p1[0] < p2[0] ? p2 : p1;
+            //     return r1[1] > r2[0] || r1[0] === r2[0];
+            // }
+            //
+            // let pos1 = getPositions( a ),
+            //     pos2 = getPositions( b );
+            //
+            // return comparePositions( pos1[0], pos2[0] ) && comparePositions( pos1[1], pos2[1] );
+            const rect1 = $(a).get(0).getBoundingClientRect();
+            const rect2 = $(b).get(0).getBoundingClientRect();
+            const isInHoriztonalBounds =
+                rect1.x < rect2.x + rect2.width && rect1.x + rect1.width > rect2.x;
+            const isInVerticalBounds =
+                rect1.y < rect2.y + rect2.height && rect1.y + rect1.height > rect2.y;
+            const isOverlapping = isInHoriztonalBounds && isInVerticalBounds;
+            return isOverlapping;
         },
 
         attachListeners: function () {

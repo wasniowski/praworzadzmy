@@ -13,8 +13,7 @@
             transition: all 0.5s ease-in-out;
 
             .year {
-                width: 600px;
-                border-left: 1px dotted $text-color-dark;
+                border-left: 1px dotted #cFcEc9;
                 box-shadow: inset 0px -20px 0px 0px $color-white;
                 padding-bottom: 20px;
 
@@ -34,12 +33,11 @@
                     height: 100%;
                     margin: 0;
                     padding: 0;
-                    min-height: 300px;
 
                     li {
+
                         position: absolute;
                         bottom: 25px;
-                        max-width: 200px;
                         padding: 0 0 0 5px;
                         margin: 0;
                         border-left: 1px solid $color-white;
@@ -95,6 +93,7 @@
 
                             span {
                                 position: relative;
+                                display: block;
                                 z-index: 11;
                             }
 
