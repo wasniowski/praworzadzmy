@@ -54,13 +54,15 @@
 
         calculateYearsWidth: function () {
             const _self = this;
-            // ilość lat
+            // obliczamy ilość lat
             _self.yearCount = $(_self.yearSelector).length;
             // obliczamy szerokość viewportu
             _self.yearsWidth = _self.yearCount * _self.yearWidth;
+            // nadajemy style wraperowi
             $(_self.yearsSelector).css({ width: `${_self.yearsWidth}px` });
+            // nadajemy style pojedynczemu roku
             $(_self.yearSelector).each(function () {
-                $(this).css({ width: `${_self.yearWidth}px`, height: `${_self.yearHeight}px` });
+                $(this).css({ width: `${_self.yearWidth}px` });
             });
         },
 
@@ -68,7 +70,9 @@
             const _self = this;
             $(_self.yearSelector).each(function () {
                 const list = $(this).find('ul li');
+                // zmienna o ile podnieść kropkę od dolnej krawędzi
                 let lastItemHeight = 20;
+                // ilość kropek w danym roku
                 let elementCount = list.length;
 
                 list.each(function (index) {
@@ -77,28 +81,43 @@
                     const item = $(this);
                     const itemIndex = index;
 
+                    // używam setTimeout chyba przez custom fonty. gdy działo się to synchrnicznie to nie zawsze
+                    // dobrze wyliczała się wysokość. Być może szerokość systemowego fonta różni się od Google Fonta
+                    // stąd czasami tekst miał 2 linijki a po pincie 3
                     setTimeout(function (){
+                        // wysokość elementu
                         const itemHeight = item.height();
+                        // pobieram który to dzień roku z data-attr
                         const dayOfTheYear = item.data('dayOfTheYear') + 1;
+                        // wyliczam miejsce na 'roku'
                         const position = Math.round((dayOfTheYear / 356) * (_self.yearWidth - 130)) + 20;
+                        // nadanie styli
                         item.css({
                             paddingBottom: `${lastItemHeight}px`,
                             transform: `translateX(${position}px)`,
                             zIndex: elementCount
                         });
+
+                        // inkrement pozycji
                         lastItemHeight += itemHeight + 16;
                         elementCount -= 1;
+
+                        // reset pozycji jeśli element przekroczy wysokość viewportu
                         if (lastItemHeight > 240) {
                             lastItemHeight = 20;
                             elementCount = list.length;
                         }
                     },100)
 
+                    // wykrywanie kolizji
                     setTimeout( function (){
                         list.each(function (index) {
                             if ((item.data('dayOfTheYear') != $(this).data('dayOfTheYear')) && itemIndex > index){
+                                // sprawdzamy czy elementy na siebie nachodzą
                                 const isCollision = _self.overlaps(item.find('span'), $(this).find('span'));
                                 if (isCollision) {
+                                    // jeśli tak to przesuwamy nachodzący element tak aby był odsunięty 30px (190+30)
+                                    // od poprzedniego elementu.
                                     const dayOfTheYear = $(this).data('dayOfTheYear') + 1;
                                     const position = Math.round((dayOfTheYear / 356) * (_self.yearWidth - 130)) + 220;
 
@@ -114,26 +133,6 @@
         },
 
         overlaps: function (a, b) {
-            // function getPositions( elem ) {
-            //     let pos, width, height;
-            //     pos = $( elem ).position();
-            //     width = $( elem ).width() / 2;
-            //     height = $( elem ).height();
-            //     console.log(pos, width, height);
-            //     return [ [ pos.left, pos.left + width ], [ pos.top, pos.top + height ] ];
-            // }
-            //
-            // function comparePositions( p1, p2 ) {
-            //     let r1, r2;
-            //     r1 = p1[0] < p2[0] ? p1 : p2;
-            //     r2 = p1[0] < p2[0] ? p2 : p1;
-            //     return r1[1] > r2[0] || r1[0] === r2[0];
-            // }
-            //
-            // let pos1 = getPositions( a ),
-            //     pos2 = getPositions( b );
-            //
-            // return comparePositions( pos1[0], pos2[0] ) && comparePositions( pos1[1], pos2[1] );
             const rect1 = $(a).get(0).getBoundingClientRect();
             const rect2 = $(b).get(0).getBoundingClientRect();
             const isInHoriztonalBounds =

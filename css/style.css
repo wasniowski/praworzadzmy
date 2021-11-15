@@ -1252,7 +1252,24 @@ select:hover {
 }
 .calendarium .viewport {
   margin-bottom: 20px;
-  overflow: hidden;
+  padding-bottom: 10px;
+  overflow-x: scroll;
+  overflow-y: visible;
+}
+.calendarium .viewport::-webkit-scrollbar {
+  -webkit-appearance: none;
+  height: 4px;
+}
+.calendarium .viewport::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+}
+@media only screen and (min-width: 992px) {
+  .calendarium .viewport {
+    overflow: hidden;
+    padding-bottom: 0;
+  }
 }
 .calendarium .viewport .years {
   display: flex;
@@ -1268,7 +1285,7 @@ select:hover {
   font-family: "syncopatebold";
   font-weight: 700;
   font-size: 14px;
-  line-height: 16px;
+  line-height: 20px;
   padding: 5px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -1276,13 +1293,13 @@ select:hover {
 .calendarium .viewport .years .year ul {
   position: relative;
   display: block;
-  height: 100%;
+  height: 310px;
   margin: 0;
   padding: 0;
 }
 .calendarium .viewport .years .year ul li {
   position: absolute;
-  bottom: 25px;
+  bottom: 0;
   padding: 0 0 0 5px;
   margin: 0;
   border-left: 1px solid #FFFFFF;
@@ -1349,14 +1366,16 @@ select:hover {
   background: #FFD600;
   border-radius: 50%;
   position: absolute;
-  display: flex;
   align-items: center;
   justify-content: center;
   top: calc(100% - 41px);
   transition: all 0.4s ease-in-out;
+  display: none;
+  z-index: 10;
 }
 @media only screen and (min-width: 992px) {
   .calendarium .arrow {
+    display: flex;
     top: calc(50% - 31px);
   }
 }
@@ -1402,8 +1421,7 @@ select:hover {
   margin-right: 30px;
   margin-bottom: 20px;
 }
-.agenda p:before {
-  content: "";
+.agenda p .agenda-item-mark {
   display: block;
   width: 20px;
   height: 4px;
@@ -1415,16 +1433,25 @@ select:hover {
 }
 
 .calendarium-events {
-  position: absolute;
+  position: fixed;
   top: 0;
-  right: -41%;
+  right: -100%;
   bottom: 0;
   overflow-y: scroll;
   background: #FBFAF5;
-  width: 41%;
-  padding: 80px 40px 50px 60px;
-  z-index: 10;
+  width: 100%;
+  padding: 80px 25px 25px 25px;
+  z-index: 1000;
   transition: all 0.4s ease;
+}
+@media only screen and (min-width: 992px) {
+  .calendarium-events {
+    position: absolute;
+    right: -850px;
+    width: 850px;
+    padding: 80px 40px 50px 60px;
+    z-index: 20;
+  }
 }
 .calendarium-events.opened {
   right: 0;
@@ -1476,44 +1503,66 @@ select:hover {
   height: 100%;
 }
 .calendarium-events .calendarium-event-details .ced-header {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr;
   margin-bottom: 20px;
 }
-.calendarium-events .calendarium-event-details .ced-header .ced-header-illustration {
-  max-width: 250px;
+@media only screen and (min-width: 992px) {
+  .calendarium-events .calendarium-event-details .ced-header {
+    grid-template-columns: 250px 1fr;
+  }
 }
 .calendarium-events .calendarium-event-details .ced-header .ced-header-illustration img {
   width: 100%;
+  max-width: 250px;
   height: auto;
 }
-.calendarium-events .calendarium-event-details .ced-header .ced-header-content {
-  background: #FBFAF5;
-  background: linear-gradient(90deg, rgba(251, 250, 245, 0) 0%, #fbfaf5 25%, #fbfaf5 100%);
-  margin-left: -100px;
-  padding-left: 65px;
+.calendarium-events .calendarium-event-details .ced-header .ced-header-content .content {
+  margin-top: 20px;
 }
-.calendarium-events .calendarium-event-details .ced-header .ced-header-content .ced-header-month {
+@media only screen and (min-width: 992px) {
+  .calendarium-events .calendarium-event-details .ced-header .ced-header-content .content {
+    background: #FBFAF5;
+    background: linear-gradient(90deg, rgba(251, 250, 245, 0) 0%, #fbfaf5 25%, #fbfaf5 100%);
+    margin-left: -100px;
+    padding-left: 65px;
+    margin-top: 0;
+    min-height: 100%;
+  }
+}
+.calendarium-events .calendarium-event-details .ced-header .ced-header-content .content .ced-header-month {
   background: #EFEEE9;
   font-size: 14px;
   line-height: 16px;
   padding: 5px 20px 5px 7px;
   display: inline-block;
 }
-.calendarium-events .calendarium-event-details .ced-header .ced-header-content .ced-header-year {
+.calendarium-events .calendarium-event-details .ced-header .ced-header-content .content .ced-header-year {
   font-family: "syncopatebold";
   font-weight: bold;
-  font-size: 28px;
-  line-height: 40px;
+  font-size: 18px;
+  line-height: 32px;
   color: #959BA2;
   padding: 0 0 5px 0;
 }
-.calendarium-events .calendarium-event-details .ced-header .ced-header-content .ced-header-title {
+@media only screen and (min-width: 992px) {
+  .calendarium-events .calendarium-event-details .ced-header .ced-header-content .content .ced-header-year {
+    font-size: 28px;
+    line-height: 40px;
+  }
+}
+.calendarium-events .calendarium-event-details .ced-header .ced-header-content .content .ced-header-title {
   font-family: "syncopatebold";
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 42px;
-  line-height: 42px;
+  font-size: 24px;
+  line-height: 24px;
+}
+@media only screen and (min-width: 992px) {
+  .calendarium-events .calendarium-event-details .ced-header .ced-header-content .content .ced-header-title {
+    font-size: 38px;
+    line-height: 38px;
+  }
 }
 .calendarium-events .calendarium-event-details .ced-description p {
   font-size: 14px;
@@ -1673,10 +1722,14 @@ select:hover {
   line-height: 30px;
   margin-bottom: 30px;
 }
-.article #article .wrapper article p:first-of-type {
-  font-weight: 600;
-  font-size: 22px;
-  line-height: 32px;
+.article #article .wrapper article h1,
+.article #article .wrapper article h2,
+.article #article .wrapper article h3,
+.article #article .wrapper article h4,
+.article #article .wrapper article h5,
+.article #article .wrapper article h6 {
+  font-family: "Mulish", sans-serif;
+  margin-bottom: 30px;
 }
 .article #article .wrapper article ul {
   margin-bottom: 30px;
@@ -1685,20 +1738,37 @@ select:hover {
   font-size: 18px;
   line-height: 30px;
 }
+.article #article .wrapper article ul li p {
+  margin: 0;
+}
 .article #article .wrapper article ul li:before {
   background: #00E794;
   width: 6px;
   height: 6px;
 }
-.article #article .wrapper article cite {
+.article #article .wrapper article .wi-txt,
+.article #article .wrapper article cite,
+.article #article .wrapper article blockquote {
   display: block;
   background: #FFD600;
-  margin-bottom: 30px;
+  margin: 0 0 30px 0;
   padding: 48px 40px;
   font-weight: 600;
   font-size: 20px;
   line-height: 36px;
   font-style: normal;
+}
+.article #article .wrapper article .wi-txt p,
+.article #article .wrapper article cite p,
+.article #article .wrapper article blockquote p {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 36px;
+}
+.article #article .wrapper article .wi-txt p:last-of-type,
+.article #article .wrapper article cite p:last-of-type,
+.article #article .wrapper article blockquote p:last-of-type {
+  margin: 0;
 }
 .article #article .wrapper article img {
   width: 100%;
@@ -1707,7 +1777,7 @@ select:hover {
 }
 .article #article .wrapper article a {
   color: #191B1D;
-  border-bottom: 1px solid #191B1D;
+  border-bottom: 1px solid #C66AFF;
 }
 .article #article .wrapper .actions {
   display: flex;

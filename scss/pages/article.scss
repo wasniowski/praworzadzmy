@@ -24,19 +24,28 @@
           font-size: 18px;
           line-height: 30px;
           margin-bottom: 30px;
-
-          &:first-of-type {
-            font-weight: 600;
-            font-size: 22px;
-            line-height: 32px;
-          }
         }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          font-family: "Mulish", sans-serif;
+          margin-bottom: 30px;
+        }
+
 
         ul {
           margin-bottom: 30px;
           li {
             font-size: 18px;
             line-height: 30px;
+
+            p {
+              margin: 0;
+            }
 
             &:before {
               background: $color-green;
@@ -46,15 +55,27 @@
           }
         }
 
-        cite {
+        .wi-txt,
+        cite,
+        blockquote {
           display: block;
           background: $color-yellow;
-          margin-bottom: 30px;
+          margin: 0 0 30px 0;
           padding: 48px 40px;
           font-weight: 600;
           font-size: 20px;
           line-height: 36px;
           font-style: normal;
+
+          p {
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 36px;
+
+            &:last-of-type {
+              margin: 0;
+            }
+          }
         }
 
         img {
@@ -65,7 +86,7 @@
 
         a {
           color: $text-color-dark;
-          border-bottom: 1px solid $text-color-dark;
+          border-bottom: 1px solid $color-violet;
         }
       }
 
