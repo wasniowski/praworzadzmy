@@ -25,6 +25,7 @@
 @import "pages/knowledge-base";
 @import "pages/article";
 @import "pages/rules";
+@import "pages/rules-en";
 @import "pages/about";
 @import "pages/contact";
 @import "pages/ambasadors";
@@ -467,6 +468,28 @@ p {
     }
   }
 
+  #rules-en {
+    background: $color-brown-medium;
+    padding: 60px 0;
+
+    .title {
+      @include breakpoint(medium) {
+        max-width: 80%;
+      }
+    }
+
+    .wrapper {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-column-gap: 20px;
+      grid-row-gap: 40px;
+      margin-bottom: 40px;
+      @include breakpoint(medium) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+  }
+
   #newsletter {
     padding: 60px 0;
     @include breakpoint(medium) {
@@ -689,15 +712,6 @@ p {
 }
 
 #rules-en {
-  background: $color-brown-medium;
-  padding: 60px 0;
-
-  .title {
-    @include breakpoint(medium) {
-      max-width: 80%;
-    }
-  }
-
   .country {
     position: relative;
 
@@ -737,29 +751,34 @@ p {
       }
     }
   }
-  .wrapper {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-column-gap: 20px;
-    grid-row-gap: 40px;
-    margin-bottom: 40px;
-    @include breakpoint(medium) {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
 
+  .wrapper {
     article {
-      img {
+      & > img {
         width: 100%;
         height: auto;
         margin-bottom: 10px;
       }
-      h4 {
-        font-size: 16px;
-        line-height: 1.5;
-        text-transform: uppercase;
-        padding: 15px;
+
+      .color {
         background: $color-brown-light;
-        min-height: 78px;
+        margin-top: 10px;
+        padding: 15px 20px;
+
+        h4 {
+          font-size: 16px;
+          line-height: 1.5;
+          text-transform: uppercase;
+          display: flex;
+        }
+
+        .dot {
+          margin-left: 15px;
+
+          &:before {
+            background: $color-brown-medium;
+          }
+        }
       }
     }
   }

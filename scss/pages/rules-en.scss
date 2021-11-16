@@ -1,0 +1,71 @@
+@import "../common/variables";
+@import "../mixins/breakpoints";
+
+.rules-en {
+  #rules-en {
+    padding: 0 0 60px 0;
+    .title-dot {
+      margin: 20px 0;
+      @include breakpoint(medium) {
+        margin: 80px 0 20px 0;
+      }
+      .title {
+        @include breakpoint(medium) {
+          max-width: 80%;
+        }
+      }
+    }
+
+    .wrapper {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-column-gap: 20px;
+      grid-row-gap: 40px;
+      margin-bottom: 40px;
+      @include breakpoint(medium) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      article {
+        .color {
+          h4 {
+            margin-bottom: 10px;
+
+            @include breakpoint(medium) {
+              min-height: 72px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #rules {
+    padding: 60px 0;
+    background: $color-brown-medium;
+
+    .title {
+      font-size: 20px;
+      line-height: 44px;
+      @include breakpoint(medium) {
+        font-size: 40px;
+        line-height: 64px;
+      }
+    }
+
+    .wrapper {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-column-gap: 20px;
+      grid-row-gap: 40px;
+      margin-bottom: 40px;
+      @include breakpoint(small) {
+        grid-template-columns: 1fr 1fr;
+      }
+      @include breakpoint(medium) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+    }
+  }
+}
+
