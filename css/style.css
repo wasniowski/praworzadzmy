@@ -2182,6 +2182,9 @@ p {
 .homepage #top .container .dot {
   display: inline-flex;
 }
+.homepage #top .container .dot:hover {
+  cursor: pointer;
+}
 .homepage #calendarium {
   background: #EFEEE9;
   padding: 60px 0 40px 0;
@@ -2657,6 +2660,81 @@ p {
   #rules .wrapper article h4 {
     font-size: 24px;
   }
+}
+
+#rules-en {
+  background: #EFEEE9;
+  padding: 60px 0;
+}
+@media only screen and (min-width: 992px) {
+  #rules-en .title {
+    max-width: 80%;
+  }
+}
+#rules-en .country {
+  position: relative;
+}
+#rules-en .country .flag {
+  position: absolute;
+  top: 5px;
+  left: -30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 1;
+}
+@media only screen and (min-width: 992px) {
+  #rules-en .country .flag {
+    top: 10px;
+    left: -45px;
+    width: 90px;
+    height: 90px;
+  }
+}
+#rules-en .country .flag img {
+  width: 100%;
+  height: auto;
+}
+#rules-en .country h2 {
+  position: relative;
+  padding-left: 15px;
+  font-family: "syncopatebold";
+  text-transform: uppercase;
+  font-size: 20px;
+  line-height: 44px;
+  z-index: 2;
+}
+@media only screen and (min-width: 992px) {
+  #rules-en .country h2 {
+    font-size: 40px;
+    line-height: 64px;
+  }
+}
+#rules-en .wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 40px;
+  margin-bottom: 40px;
+}
+@media only screen and (min-width: 992px) {
+  #rules-en .wrapper {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+#rules-en .wrapper article img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+#rules-en .wrapper article h4 {
+  font-size: 16px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  padding: 15px;
+  background: #FBFAF5;
+  min-height: 78px;
 }
 
 /*# sourceMappingURL=style.css.map */
